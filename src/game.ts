@@ -10,10 +10,10 @@ class Game {
     
 
     }
+    
 
     public draw() {
-        background('white');
-
+        // background('white');
        
     }
 }
