@@ -1,3 +1,15 @@
+# Space Patrol
+README filen för slutprojektgrupparbetet i Javascript grundkurs, Medieinstitutet Göteborg.
+Medverkande i detta projekt;
+Sabina Andersson
+Rosanna Pistone
+William Saar
+Sara Lindqvist
+Elin Arntén
+
+2021-01-14
+
+
 # Slutprojektet
 Välkommen till den förinställda kodbasen för slutprojektet.
 Se filen `./src/sketch.ts` för hur ni ska börja skriva er kod!
