@@ -15,10 +15,6 @@ class Bomb extends SpaceObject {
         
     }
 
-    public getBomb() {
-        
-    }
-
     public changeLives() {
         
     }
