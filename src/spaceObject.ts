@@ -24,11 +24,11 @@ class SpaceObject {
 
     }
 
-    public updateSpaceObjects() {
+    public update() {
 
     }
 
-    public drawSpaceObjects() {
+    public draw() {
 
     }
 }
