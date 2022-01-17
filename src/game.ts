@@ -3,7 +3,7 @@ class Game {
     
 
     constructor(){
-       
+        
     }
 
     public update() {
@@ -13,7 +13,7 @@ class Game {
     
 
     public draw() {
-        // background('white');
+        clear();
        
     }
 }
