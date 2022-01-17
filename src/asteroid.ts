@@ -11,9 +11,6 @@ class Asteroid extends SpaceObject {
         
     }
 
-    public getAsteroid() { 
-
-    }
 
     public changeHealth() { 
 
