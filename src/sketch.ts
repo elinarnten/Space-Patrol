@@ -1,3 +1,4 @@
+
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 // let sound: p5.SoundFile
@@ -19,10 +20,15 @@ function preload() {
  */
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    frameRate(60);
+    frameRate(1);
     // noCursor();
+    
+    // level base stats, time, levelvalue, objectsize, amountofobjects, levelgoal, amountoflives
+    const level = new Level(1200, 1, 1, 1, 20, 3)
+    // const timeBaseValue = timeBaseValue(200)
 
-    game = new Game(level, amountOfLives, pauseMenu, startMenu, score, gameOver);
+    // level, amountOfLives, Score
+    game = new Game(level, 3, 0, false);
 }
 
 /**
@@ -34,6 +40,7 @@ function draw() {
 
     game.update();
     game.draw();
+    
 }
 
 

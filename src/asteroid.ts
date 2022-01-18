@@ -3,8 +3,8 @@ class Asteroid extends SpaceObject {
 
     private isDestroyed: boolean;
 
-    constructor(name: string, x: number, y: number, size: number, health: number, image: p5.Image, friendly: boolean, isDestroyed: boolean) {
-        super(name, x, y, size, health, image, friendly);
+    constructor(name: string, x: number, y: number, size: number, health: number, image: p5.Image, friendly: boolean, isDestroyed: boolean, explosionTimeOut: number) {
+        super(name, x, y, size, health, image, friendly, explosionTimeOut);
         this.isDestroyed = isDestroyed;
     }
 
@@ -14,10 +14,6 @@ class Asteroid extends SpaceObject {
 
 
     public changeHealth() { 
-
-    }
-
-    public score() { 
 
     }
 

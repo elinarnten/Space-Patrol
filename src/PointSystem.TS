@@ -4,12 +4,19 @@ class PointSystem {
         
     }
 
+    public getScore() {
+
+    }
+
+    public passLevel() {
+
+    }
+
     public update() {
     
 
     }
     
-
     public draw() {
        
     }

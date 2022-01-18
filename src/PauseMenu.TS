@@ -1,16 +1,20 @@
 class PauseMenu {
-    private isMenuOpen: boolean
+    
+    private gameState: GameState; 
+   
+    constructor(gameState: GameState){
+        this.gameState = gameState;
 
-    constructor(isMenuOpen: boolean){
-        this.isMenuOpen = isMenuOpen;
+        gameState.gameState = 'paused';
     }
     
-    public draw() {
-    }
-
+    
     public quitGame() {
     }
-
+    
     public resumeGame() {
+    }
+
+    public draw() {
     }
 } 
