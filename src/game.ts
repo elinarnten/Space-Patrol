@@ -9,7 +9,7 @@ class Game {
     
 
     constructor(level: Level, amountOfLives: number, pauseMenu: PauseMenu, startMenu: StartMenu, score: number, gameOver: boolean){
-        this.level = new level;
+        this.level = new level
         this.amountOfLives = amountOfLives
         this.pauseMenu = pauseMenu
         this.startMenu = startMenu

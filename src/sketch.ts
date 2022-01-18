@@ -22,7 +22,7 @@ function setup() {
     frameRate(60);
     // noCursor();
 
-    game = new Game();
+    game = new Game(level, amountOfLives, pauseMenu, startMenu, score, gameOver);
 }
 
 /**
