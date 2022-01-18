@@ -1,3 +1,7 @@
+/// <reference path='./Level.ts'/>
+/// <reference path='./PauseMenu.ts'/>
+/// <reference path='./StartMenu.ts'/>
+
 class Game {
      
     private level: Level;
@@ -37,7 +41,7 @@ class Game {
         strokeWeight(4);
         stroke('white')
         circle(700, 300, 100);
-        texture('./assets/images/asteroid.png');
+        // texture('./assets/images/asteroid.png');
         
         fill('black');
         rect(200,20,20,100);

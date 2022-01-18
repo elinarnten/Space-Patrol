@@ -1,4 +1,3 @@
- /// <reference path='./SpaceObject.ts'/>
 class Bomb extends SpaceObject {
 
     private isHit: boolean;
