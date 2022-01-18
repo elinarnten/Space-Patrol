@@ -1,11 +1,13 @@
 class StartMenu {
 
-    private isMenuOpen: boolean;
+    private gameState: GameState;
 
-    constructor(isMenuOpen: boolean){
-        this.isMenuOpen = isMenuOpen
+    constructor(gameState: GameState){
+        this.gameState = gameState; 
+        // eventually this might not be needed
+        gameState.gameState = 'start';
     }
-    
+
     public startGame() {
     }
 
