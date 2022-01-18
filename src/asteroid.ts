@@ -1,4 +1,4 @@
-/// <reference path='./SpaceObject.ts'/>
+/// <reference path='./spaceObject.ts'/>
 class Asteroid extends SpaceObject {
 
     private isDestroyed: boolean;
