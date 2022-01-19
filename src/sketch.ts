@@ -3,7 +3,9 @@
 let game: Game;
 let spaceObject: SpaceObject;
 let spaceObject2: SpaceObject;
+let spaceObject3: SpaceObject;
 let asteroidimg: p5.Image;
+let spaceObjects: Array<SpaceObject> = [];
 
 
 // let sound: p5.SoundFile
@@ -38,10 +40,12 @@ function setup() {
 
     // level, amountOfLives, Score
     game = new Game(level, 3, 0, false);
+    level.generateSpaceObjects();
 
     // creates spaceObject
     spaceObject = new SpaceObject('asteroid', createVector(1000, 300), 100, 1, asteroidimg, false, 5);
     spaceObject2 = new SpaceObject('asteroid', createVector(500, 100), 300, 1, asteroidimg, false, 5);
+    spaceObject3 = new SpaceObject('asteroid', createVector(700, 600), 200, 1, asteroidimg, false, 5);
 
 
 
@@ -58,6 +62,7 @@ function draw() {
     clear();
     spaceObject.draw();
     spaceObject2.draw();
+    spaceObject3.draw();
     spaceObject.update();
     game.update();
     game.draw();

@@ -35,7 +35,6 @@ class SpaceObject {
         imageMode(CENTER);
         image(asteroidimg, 0, 0, this.size, this.size);
 
-
         this.angle = this.angle + 1;
         pop();
         
