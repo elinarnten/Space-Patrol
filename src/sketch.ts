@@ -1,6 +1,11 @@
 
 //---- GLOBAL VARIABLES ----//
 let game: Game;
+let spaceObject: SpaceObject;
+let spaceObject2: SpaceObject;
+let asteroidimg: p5.Image;
+
+
 // let sound: p5.SoundFile
 
 /**
@@ -9,7 +14,10 @@ let game: Game;
  * sound files, images etc...
  */
 function preload() {
+    asteroidimg = loadImage('./assets/images/asteroid.png')
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
+
+    
 }
 
 /**
@@ -20,7 +28,7 @@ function preload() {
  */
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    frameRate(1);
+    frameRate(60);
     // noCursor();
     
     // level base stats, time, levelvalue, objectsize, amountofobjects, levelgoal, amountoflives
@@ -29,6 +37,15 @@ function setup() {
 
     // level, amountOfLives, Score
     game = new Game(level, 3, 0, false);
+
+    // creates spaceObject
+    spaceObject = new SpaceObject('asteroid', createVector(1000, 300), 100, 1, asteroidimg, false, 5);
+    spaceObject2 = new SpaceObject('asteroid', createVector(500, 100), 300, 1, asteroidimg, false, 5);
+
+
+
+
+
 }
 
 /**
@@ -37,7 +54,10 @@ function setup() {
  * you created in the setup function above
  */
 function draw() {
-
+    clear();
+    spaceObject.draw();
+    spaceObject2.draw();
+    spaceObject.update();
     game.update();
     game.draw();
     
