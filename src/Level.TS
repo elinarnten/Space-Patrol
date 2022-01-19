@@ -28,12 +28,7 @@ class Level {
     } */
 
     public generateSpaceObjects() {
-        for (let i = 0; i > 10; i++) {
-            let spaceObject;
-            spaceObject = spaceObject + i;
-            let spaceObject  = new SpaceObject('asteroid', createVector(1000, 300), 100, 1, asteroidimg, false, 5);
-            spaceObject 
-        }
+        
     }
 
     public goToNextLevel() {
