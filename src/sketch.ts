@@ -31,7 +31,7 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth, windowHeight-80);
     angleMode(DEGREES);
     frameRate(60);
     // noCursor();
@@ -72,7 +72,6 @@ function draw() {
     game.update();
     game.draw();
     image(cockpit, 0, 0, width, height);
-
     
 }
 
@@ -81,5 +80,5 @@ function draw() {
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, windowHeight-80);
 }

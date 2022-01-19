@@ -2,7 +2,6 @@ class Level {
     public spaceObjects: Array<SpaceObject> = [];
 
     // Is this supporsed to be a func using timeBaseValue -1ms for every fps/loop.
-    // private timeToDestruct: number;
     private timeBaseValue: number;
     private levelValue: number;
     private objectSize: number;
@@ -17,14 +16,11 @@ class Level {
         this.amountOfObjects = amountOfObjects;
         this.levelGoal = levelGoal;
         this.amountOfLives = amountOfLives;  
-        
-  
-
     }
 
-    /* public getCurrentLevel() {
-
-    } */
+    public getCurrentLevel() {
+        return this.levelValue;
+    }
 
     /* public setNewGoal() {
 

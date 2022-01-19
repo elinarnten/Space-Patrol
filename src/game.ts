@@ -2,6 +2,7 @@
 /// <reference path='./PauseMenu.ts'/>
 /// <reference path='./StartMenu.ts'/>
 /// <reference path='./TopMenu.ts'/>
+/// <reference path='./PointSystem.ts'/>
 
 class Game {
     private level: Level;
@@ -12,10 +13,15 @@ class Game {
     private score: number;
     private gameState: GameState;
     private gameOver: boolean;
+    private topMenu: TopMenu;
+    private pointSystem: PointSystem;
+    
     
 
     constructor(level: Level, amountOfLives: number, score: number, gameOver: boolean){
         this.level = new Level(1200, 1, 1, 1, 20, 3);
+        this.pointSystem = new PointSystem()
+        this.topMenu = new TopMenu(this.level, this.pointSystem);
         this.amountOfLives = amountOfLives;
         this.gameState = {gameState: "start"};
         this.pauseMenu = new PauseMenu(this.gameState);
@@ -41,6 +47,7 @@ class Game {
         this.level.draw();
         // topMenu.draw();
         // this.spaceObject.draw();
+        // creates topMenu
     }
 
 }
