@@ -61,6 +61,7 @@ function draw() {
     game.update();
     game.draw();
     image(cockpit, 0, 0, width, height);
+    console.log(mouseX, mouseY);
 
     
 }
