@@ -14,7 +14,7 @@ let spaceObjects: Array<SpaceObject> = [];
  * sound files, images etc...
  */
 function preload() {
-    cockpit = loadImage('./assets/images/cockpit.png');
+    cockpit = loadImage('./assets/images/cockpit5.png');
     asteroidimg = loadImage('./assets/images/asteroid.png')
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
 
@@ -61,7 +61,9 @@ function draw() {
     game.update();
     game.draw();
     image(cockpit, 0, 0, width, height);
-    console.log(mouseX, mouseY);
+    strokeWeight(20);
+    translate(width/2, height - 40);
+    line(0, 0, 0, -80)
 
     
 }
