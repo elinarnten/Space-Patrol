@@ -28,7 +28,12 @@ class Level {
     } */
 
     public generateSpaceObjects() {
-
+        for (let i = 0; i > 10; i++) {
+            let spaceObject;
+            spaceObject = spaceObject + i;
+            let spaceObject  = new SpaceObject('asteroid', createVector(1000, 300), 100, 1, asteroidimg, false, 5);
+            spaceObject 
+        }
     }
 
     public goToNextLevel() {
@@ -44,11 +49,23 @@ class Level {
     }
     
     public update() {
+        //  for(let i = 0; i < 50; i++) {
+        //      let asteroid  = new SpaceObject('asteroid', createVector(i * 10, i * 5), 50, 1, asteroidimg, false, 5);
+        //      this.spaceObjects.push(asteroid);  
+        //     }
+        //     this.amountOfObjects += 0.5;
 
+        
     }
 
     public draw() {
-    
+        
+            // for(let objects of this.spaceObjects) {
+            //     image(asteroidimg, this.amountOfObjects * 10, this.amountOfObjects * 5, 50, 50)
+            // }
+        
+        
+
 
     }
 }
