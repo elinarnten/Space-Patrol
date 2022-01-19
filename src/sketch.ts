@@ -47,10 +47,13 @@ function setup() {
     spaceObject2 = new SpaceObject('asteroid', createVector(500, 100), 300, 1, asteroidimg, false, 5);
     spaceObject3 = new SpaceObject('asteroid', createVector(700, 600), 200, 1, asteroidimg, false, 5);
 
+}
 
-
-
-
+function keyTyped() {
+    if (keyCode === 32) {
+        console.log('its working :O');
+    }
+     
 }
 
 /**
