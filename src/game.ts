@@ -1,6 +1,7 @@
 /// <reference path='./Level.ts'/>
 /// <reference path='./PauseMenu.ts'/>
 /// <reference path='./StartMenu.ts'/>
+/// <reference path='./TopMenu.ts'/>
 
 class Game {
     private level: Level;
@@ -35,9 +36,11 @@ class Game {
         this.level.update();
     }
 
+
     public draw() {
         this.level.draw();
+        // topMenu.draw();
         // this.spaceObject.draw();
-    
     }
+
 }
