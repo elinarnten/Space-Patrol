@@ -6,9 +6,9 @@ class TopMenu {
     }
     
     public addTopMenuContainer(){
-       const topMenuContainer = document.createElement('DIV');
-       document.body.appendChild(topMenuContainer);
-
+        const topMenuContainer = document.createElement('DIV');
+        document.body.appendChild(topMenuContainer);
+        return topMenuContainer;
 
     }
 
