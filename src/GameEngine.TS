@@ -1,3 +1,5 @@
+/// <reference path="./Level.TS"/>
+
 class GameEngine {
 
     private level: Level;
