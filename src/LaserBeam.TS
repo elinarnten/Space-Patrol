@@ -32,7 +32,7 @@ import p5 from "p5";
     
 
     public draw() {
-       
+    
     }
 
     public rotateBeam() {

@@ -4,6 +4,8 @@ let game: Game;
 let cockpit: p5.Image;
 let asteroidimg: p5.Image;
 let spaceObjects: Array<SpaceObject> = [];
+let angleBeam = 0;
+let angleChangeDirection = true;
 
 
 // let sound: p5.SoundFile
@@ -61,9 +63,28 @@ function draw() {
     game.update();
     game.draw();
     image(cockpit, 0, 0, width, height);
+    
+    
     strokeWeight(20);
     translate(width/2, height - 40);
+    rotate(angleBeam)
     line(0, 0, 0, -80)
+    if(angleBeam < 90 && angleChangeDirection == true) {
+        angleChangeDirection = true;
+        
+    } else if (angleBeam <= 90) {
+        angleChangeDirection = false
+    }
+
+    if(angleBeam < 90 && angleChangeDirection == true) {
+        angleBeam = angleBeam + 1;
+    }   else if(angleChangeDirection == false) {
+        angleBeam = angleBeam - 1;
+        if (angleBeam <= -90) {
+            angleChangeDirection = true;
+        }
+
+    }
 
     
 }
