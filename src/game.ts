@@ -6,7 +6,6 @@
 
 class Game {
     private level: Level;
-    private spaceObject: SpaceObject;
     private amountOfLives: number;
     private pauseMenu: PauseMenu;
     private startMenu: StartMenu;
@@ -28,7 +27,6 @@ class Game {
         this.startMenu = new StartMenu(this.gameState);
         this.score = score;
         this.gameOver = gameOver;
-        this.spaceObject = new SpaceObject('asteroid', createVector(10, 10), 30, 30, asteroidimg, false, 30);
         
         
     }

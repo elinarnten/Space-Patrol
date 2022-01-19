@@ -28,7 +28,7 @@ class Level {
 
     public generateSpaceObjects() {
         for(let i = 0; i < 5; i++) {
-            spaceObjects.push(new SpaceObject('asteroid', createVector(random(100, width), random(100, height)), random(10, 200), 1, asteroidimg, false, 5))
+            spaceObjects.push(new SpaceObject('asteroid', createVector(random(100, (width - 100)), random(100, (height - height /4))), random(50, 200), 1, asteroidimg, false, 5))
         }
         
     }
@@ -54,6 +54,8 @@ class Level {
         for(let objects of spaceObjects) {
             objects.draw();
         }
+
+        
 
     }
 }
