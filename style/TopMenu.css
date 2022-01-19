@@ -1,13 +1,35 @@
 #topMenuContainer {
+
     background-color: #05172E;
+
     color: #FAFF00;
+
     width: 100vw;
-    height: 5rem;
+
+    height: 80px;
+
     position: absolute;
+
     top: 0;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
+
+}
+
+
+
+#levelContainer,
+
+#scoreContainer,
+
+#livesContainer,
+
+#timercontainer{
+
+    padding: 7rem;
+
 }
