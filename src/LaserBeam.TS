@@ -32,10 +32,19 @@ import p5 from "p5";
     
 
     public draw() {
-    
+        push();
+
+        
+        
+        translate(width / 2, height / 2);
+        translate(p5.Vector.fromAngle(millis() / 1000, 40));
+        stroke('red');
+        strokeWeight(5);
+        pop();
     }
 
     public rotateBeam() {
-
+       angleMode(DEGREES);
+      
     }
 }

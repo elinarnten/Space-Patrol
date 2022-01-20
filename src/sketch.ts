@@ -70,7 +70,7 @@ function draw() {
     image(images.cockpit, 0, 0, width, height);
 
     
-    strokeWeight(20);
+    strokeWeight(10);
     translate(width/2, height - 40);
     rotate(angleBeam)
     line(0, 0, 0, -80)
