@@ -40,7 +40,13 @@ class Level {
         for(let i = 0; i < 5; i++) {
             const position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
             const size = random(50, 200);
-            spaceObjects.push(new Asteroid(position, size, 1, false, 5))
+            spaceObjects.push(new Asteroid(position, size, 1, 5));
+        }
+
+        for(let i = 0; i < 3; i++) {
+            const position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
+            spaceObjects.push(new Bomb(position, 3));
+
         }
         
     }
