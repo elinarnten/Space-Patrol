@@ -1,5 +1,7 @@
 class Level {
+
     // public spaceObjects: Array<Asteroid> = [];
+
 
     // Is this supporsed to be a func using timeBaseValue -1ms for every fps/loop.
     private timeBaseValue: number;
@@ -9,7 +11,15 @@ class Level {
     private levelGoal: number;
     private amountOfLivesLeft: number;
 
-    constructor(timeBaseValue: number, levelValue: number, objectSize: number, amountOfObjects: number, levelGoal: number, amountOfLivesLeft: number){
+
+    constructor(
+        timeBaseValue: number,
+        levelValue: number,
+        objectSize: number,
+        amountOfObjects: number,
+        levelGoal: number,
+        amountOfLivesLeft: number,
+    ) {
         this.timeBaseValue = timeBaseValue;
         this.levelValue = levelValue;
         this.objectSize = objectSize;
@@ -24,6 +34,18 @@ class Level {
     public getTimeBaseValue() {
         return this.timeBaseValue;
     }
+
+    public LevelCountDownTimer() {
+        if (frameCount % 60 === 0 && this.timeBaseValue > 0) {
+            this.timeBaseValue--;
+        }
+
+        if (this.timeBaseValue === 0) {
+            
+            // run passLevel()
+        }
+    }
+
     public getLevelGoal() {
         return this.levelGoal;
     }
@@ -76,28 +98,27 @@ class Level {
     public goToNextLevel() {
 
     }
-    
+
     public checkForDestroyedObjects() {
 
     }
-    
+
     public calculateScore(spaceObject: []) {
 
     }
-    
+
     public update() {
-        for(let object of spaceObjects) {
+        for (let object of spaceObjects) {
             object.update();
             // if(object instanceof Asteroid) use to check if bomb or asteroid
         }
-        
+
     }
 
     public draw() {
-        for(let object of spaceObjects) {
+        for (let object of spaceObjects) {
             object.draw();
         }
-        
 
     }
 }

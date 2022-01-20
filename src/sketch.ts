@@ -5,6 +5,7 @@ let images: Images;
 let spaceObjects: Array<SpaceObject> = []; 
 let angleBeam = 0;
 let angleChangeDirection = true;
+const timeBaseValue = 1200;
 
 
 // let sound: p5.SoundFile
