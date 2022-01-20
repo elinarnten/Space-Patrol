@@ -3,9 +3,9 @@ class Asteroid extends SpaceObject {
 
     private isDestroyed: boolean;
 
-    constructor(name: string, position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, isDestroyed: boolean, explosionTimeOut: number) {
-        super(name, position, size, health, image, friendly, explosionTimeOut);
-        this.isDestroyed = isDestroyed;
+    constructor(position: p5.Vector, size: number, health: number, friendly: boolean, explosionTimeOut: number) {
+        super(position, size, health, images.asteroid, friendly, explosionTimeOut);
+        this.isDestroyed = false;
     }
 
     public rotateAsteroid() {

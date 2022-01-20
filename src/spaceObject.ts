@@ -1,6 +1,6 @@
-class SpaceObject {
+abstract class SpaceObject {
 
-    protected name: string;
+    
     protected position: p5.Vector;
     protected size: number;
     protected health: number;
@@ -9,8 +9,8 @@ class SpaceObject {
     protected explosionTimeOut: number;
     protected angle = 0;
 
-    constructor(name: string, position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, explosionTimeOut: number) {
-        this.name = name;
+    constructor(position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, explosionTimeOut: number) {
+
         this.position = position;
         this.size = size;
         this.health = health;
@@ -24,7 +24,7 @@ class SpaceObject {
     }
 
     public update() {
-        
+        this.angle = this.angle + 1;
         
     }
 
@@ -33,9 +33,9 @@ class SpaceObject {
         translate(this.position.x, this.position.y);
         rotate(this.angle);
         imageMode(CENTER);
-        image(asteroidimg, 0, 0, this.size, this.size);
-
-        this.angle = this.angle + 1;
+        image(this.image, 0, 0, this.size, this.size);
+        
+    
         pop();
         
     }

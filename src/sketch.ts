@@ -1,8 +1,7 @@
 
 //---- GLOBAL VARIABLES ----//
 let game: Game;
-let cockpit: p5.Image;
-let asteroidimg: p5.Image;
+let images: Images;
 let spaceObjects: Array<SpaceObject> = [];
 let angleBeam = 0;
 let angleChangeDirection = true;
@@ -16,8 +15,13 @@ let angleChangeDirection = true;
  * sound files, images etc...
  */
 function preload() {
-    cockpit = loadImage('./assets/images/cockpit5.png');
-    asteroidimg = loadImage('./assets/images/asteroid.png')
+    images = {
+        cockpit: loadImage('./assets/images/cockpit5.png'),
+        asteroid: loadImage('./assets/images/asteroid.png'),
+        bomb: loadImage('./assets/images/bomb.png')
+
+    }
+
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
 
     
@@ -40,7 +44,7 @@ function setup() {
     // const timeBaseValue = timeBaseValue(200)
 
     // level, BaseAmountOfLives, Score
-    game = new Game(level, 0, false);
+    game = new Game(level, 0);
     level.generateSpaceObjects();
 
 
@@ -63,7 +67,7 @@ function draw() {
     clear();
     game.update();
     game.draw();
-    image(cockpit, 0, 0, width, height);
+    image(images.cockpit, 0, 0, width, height);
 
     
     strokeWeight(20);
