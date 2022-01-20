@@ -6,7 +6,6 @@
 
 class Game {
     private level: Level;
-    private amountOfLives: number;
     private pauseMenu: PauseMenu;
     private startMenu: StartMenu;
     private score: number;
@@ -17,21 +16,18 @@ class Game {
     
     
 
-    constructor(level: Level, amountOfLives: number, score: number, gameOver: boolean){
+    constructor(level: Level, score: number, gameOver: boolean){
         this.level = new Level(1200, 1, 1, 1, 20, 3);
-        this.pointSystem = new PointSystem()
+        this.pointSystem = new PointSystem(3)
         this.topMenu = new TopMenu(this.level, this.pointSystem);
-        this.amountOfLives = amountOfLives;
         this.gameState = {gameState: "start"};
         this.pauseMenu = new PauseMenu(this.gameState);
         this.startMenu = new StartMenu(this.gameState);
         this.score = score;
-        this.gameOver = gameOver;
-        
-        
+        this.gameOver = gameOver;  
     }
 
-    
+
     public playSound() {
         
     }
@@ -43,9 +39,6 @@ class Game {
 
     public draw() {
         this.level.draw();
-        // topMenu.draw();
-        // this.spaceObject.draw();
-        // creates topMenu
     }
 
 }

@@ -39,12 +39,13 @@ function setup() {
     const level = new Level(1200, 1, 1, 1, 20, 3)
     // const timeBaseValue = timeBaseValue(200)
 
-    // level, amountOfLives, Score
-    game = new Game(level, 3, 0, false);
+    // level, BaseAmountOfLives, Score
+    game = new Game(level, 0, false);
     level.generateSpaceObjects();
 
 
 }
+
 
 function keyTyped() {
     if (keyCode === 32) {
