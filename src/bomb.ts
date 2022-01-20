@@ -2,9 +2,9 @@ class Bomb extends SpaceObject {
 
     private isHit: boolean;
 
-    constructor(name: string, position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, isHit: boolean, explosionTimeOut: number) {
-        super(name, position, size, health, image, friendly, explosionTimeOut);
-        this.isHit = isHit;
+    constructor(position: p5.Vector, size: number, health: number, friendly: boolean, explosionTimeOut: number) {
+        super(position, size, health, images.bomb, friendly, explosionTimeOut);
+        this.isHit = false;
     }
 
     public explodeBomb() {

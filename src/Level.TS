@@ -38,7 +38,9 @@ class Level {
 
     public generateSpaceObjects() {
         for(let i = 0; i < 5; i++) {
-            spaceObjects.push(new SpaceObject('asteroid', createVector(random(100, (width - 100)), random(100, (height - height /4))), random(50, 200), 1, asteroidimg, false, 5))
+            const position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
+            const size = random(50, 200);
+            spaceObjects.push(new Asteroid(position, size, 1, false, 5))
         }
         
     }
@@ -56,13 +58,16 @@ class Level {
     }
     
     public update() {
-       
+        for(let object of spaceObjects) {
+            object.update();
+            // if(object instanceof Asteroid) use to check if bomb or asteroid
+        }
         
     }
 
     public draw() {
-        for(let objects of spaceObjects) {
-            objects.draw();
+        for(let object of spaceObjects) {
+            object.draw();
         }
 
         
