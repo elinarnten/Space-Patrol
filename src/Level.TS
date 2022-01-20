@@ -7,19 +7,29 @@ class Level {
     private objectSize: number;
     private amountOfObjects: number;
     private levelGoal: number;
-    private amountOfLives: number;
+    private amountOfLivesLeft: number;
 
-    constructor(timeBaseValue: number, levelValue: number, objectSize: number, amountOfObjects: number, levelGoal: number, amountOfLives: number){
+    constructor(timeBaseValue: number, levelValue: number, objectSize: number, amountOfObjects: number, levelGoal: number, amountOfLivesLeft: number){
         this.timeBaseValue = timeBaseValue;
         this.levelValue = levelValue;
         this.objectSize = objectSize;
         this.amountOfObjects = amountOfObjects;
         this.levelGoal = levelGoal;
-        this.amountOfLives = amountOfLives;  
+        this.amountOfLivesLeft = amountOfLivesLeft;  
     }
 
     public getCurrentLevel() {
         return this.levelValue;
+    }
+    public getTimeBaseValue() {
+        return this.timeBaseValue;
+    }
+    public getLevelGoal() {
+        return this.levelGoal;
+    }
+
+    public getAmountOfLivesLeft() {
+        return this.amountOfLivesLeft;
     }
 
     /* public setNewGoal() {

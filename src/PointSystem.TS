@@ -1,9 +1,14 @@
 class PointSystem {
+    private baseAmountOfLives: number;
 
-    constructor(){
-        
+    constructor(baseAmountOfLives: number){
+        this.baseAmountOfLives = baseAmountOfLives;
     }
 
+    public getBaseAmountOfLives() {
+        return this.baseAmountOfLives;
+    }
+    
     public getScore() {
 
     }
