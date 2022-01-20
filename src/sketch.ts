@@ -2,7 +2,7 @@
 //---- GLOBAL VARIABLES ----//
 let game: Game;
 let images: Images;
-let spaceObjects: Array<SpaceObject> = [];
+let spaceObjects: Array<SpaceObject> = []; 
 let angleBeam = 0;
 let angleChangeDirection = true;
 

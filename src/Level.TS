@@ -1,5 +1,5 @@
 class Level {
-    public spaceObjects: Array<SpaceObject> = [];
+    // public spaceObjects: Array<Asteroid> = [];
 
     // Is this supporsed to be a func using timeBaseValue -1ms for every fps/loop.
     private timeBaseValue: number;
@@ -15,7 +15,7 @@ class Level {
         this.objectSize = objectSize;
         this.amountOfObjects = amountOfObjects;
         this.levelGoal = levelGoal;
-        this.amountOfLivesLeft = amountOfLivesLeft;  
+        this.amountOfLivesLeft = amountOfLivesLeft; 
     }
 
     public getCurrentLevel() {
@@ -37,19 +37,41 @@ class Level {
     } */
 
     public generateSpaceObjects() {
-        for(let i = 0; i < 5; i++) {
-            const position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
-            const size = random(50, 200);
-            spaceObjects.push(new Asteroid(position, size, 1, 5));
+
+        while(spaceObjects.length < 5) {
+            let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
+            let size = random(25, 100);
+            let asteroid = new Asteroid(position, size, 1, 5)
+
+            let overlapping = false;
+            
+            for(let j = 0; j < spaceObjects.length; j++) {
+                let other = spaceObjects[j];
+                console.log(asteroid.position);
+                console.log(spaceObjects);
+                let d = dist(asteroid.position.x, asteroid.position.y, other.position.x, other.position.y);
+
+                if(d < asteroid.size + other.size) {
+                    //then they are overlapping
+                    overlapping = true;
+                    
+                }
+            }
+
+            if(!overlapping) {
+                spaceObjects.push(asteroid);
+            }
+
         }
 
-        for(let i = 0; i < 3; i++) {
-            const position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
-            spaceObjects.push(new Bomb(position, 3));
-
-        }
-        
     }
+        // for(let i = 0; i < 3; i++) {
+        //     const position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
+        //     spaceObjects.push(new Bomb(position, 3));
+
+        // }
+        
+    
 
     public goToNextLevel() {
 
@@ -75,7 +97,6 @@ class Level {
         for(let object of spaceObjects) {
             object.draw();
         }
-
         
 
     }

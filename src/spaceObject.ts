@@ -1,8 +1,8 @@
 abstract class SpaceObject {
 
     
-    protected position: p5.Vector;
-    protected size: number;
+    public position: p5.Vector;
+    public size: number;
     protected health: number;
     protected image: p5.Image;
     protected friendly: boolean;
@@ -22,6 +22,7 @@ abstract class SpaceObject {
     public shouldBeRemoved() {
 
     }
+    
 
     public update() {
         this.angle = this.angle + 1;
@@ -33,10 +34,7 @@ abstract class SpaceObject {
         translate(this.position.x, this.position.y);
         rotate(this.angle);
         imageMode(CENTER);
-        image(this.image, 0, 0, this.size, this.size);
-        
-    
+        image(this.image, 0, 0, this.size * 2, this.size * 2);
         pop();
-        
     }
 }
