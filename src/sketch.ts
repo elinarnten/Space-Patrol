@@ -3,15 +3,12 @@
 let timerValue = 5;
 let game: Game;
 let images: Images;
-let spaceObjects: Array<SpaceObject> = [];
+let spaceObjects: Array<SpaceObject> = []; 
 let angleBeam = 0;
 let angleChangeDirection = true;
 let spaceBar = false;
-
-
 let isActivated: IsActivated;
-
-
+const timeBaseValue = 1200;
 
 
 // let sound: p5.SoundFile
