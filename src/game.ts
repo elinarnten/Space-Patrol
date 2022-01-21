@@ -3,6 +3,9 @@
 /// <reference path='./StartMenu.ts'/>
 /// <reference path='./TopMenu.ts'/>
 /// <reference path='./PointSystem.ts'/>
+/// <reference path='./laserBeam.ts'/>
+/// <reference path='./IsActivated.TS'/>
+
 
 class Game {
     private level: Level;
@@ -13,6 +16,7 @@ class Game {
     private gameOver: boolean;
     private topMenu: TopMenu;
     private pointSystem: PointSystem;
+    // private isActivated: IsActivated;
     
     
 
@@ -24,8 +28,10 @@ class Game {
         this.pauseMenu = new PauseMenu(this.gameState);
         this.startMenu = new StartMenu(this.gameState);
         this.score = score;
-        this.gameOver = false;  
-    }
+        this.gameOver = false; 
+        // this.isActivated = new IsActivated(false, angleBeam, createVector(width/2, height - 40));
+
+            }
 
 
     public playSound() {
@@ -38,6 +44,7 @@ class Game {
 
 
     public draw() {
+            
         this.level.draw();
     }
 
