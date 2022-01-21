@@ -1,10 +1,13 @@
 
 //---- GLOBAL VARIABLES ----//
+let timerValue = 5;
 let game: Game;
 let images: Images;
 let spaceObjects: Array<SpaceObject> = []; 
 let angleBeam = 0;
 let angleChangeDirection = true;
+let spaceBar = false;
+let isActivated: IsActivated;
 const timeBaseValue = 1200;
 let spaceFont;
 
@@ -50,17 +53,27 @@ function setup() {
     // level, BaseAmountOfLives, Score
     game = new Game(level, 0);
     level.generateSpaceObjects();
-
+    isActivated = new IsActivated(false, angleBeam, createVector(width/2, height - 40));
+    
 
 }
 
 
 function keyTyped() {
-    if (keyCode === 32) {
-        console.log('its working :O');
-    }
-     
+   
+     if (keyCode === 32) {
+         timerValue = 5
+         stroke(random(255), random(100, 200), random(100), random(200, 255));
+         spaceBar = true;
+        
+         console.log(timerValue)
+         
+        
+         //kallar på isActivated funktionen    
+     }
+    
 }
+     
 
 /**
  * Built in draw function in P5
@@ -71,10 +84,15 @@ function draw() {
     clear();
     game.update();
     game.draw();
-    image(images.cockpit, 0, 0, width, height);
 
+    if(spaceBar) {
+        isActivated.draw();
+    }
+  
+    image(images.cockpit, 0, 0, width, height);
     
-    strokeWeight(20);
+    push();
+    strokeWeight(10);
     translate(width/2, height - 40);
     rotate(angleBeam)
     line(0, 0, 0, -80)
@@ -94,7 +112,11 @@ function draw() {
         }
 
     }
+    pop()
 
+   
+
+   
     
 }
 
