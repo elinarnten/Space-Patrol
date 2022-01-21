@@ -6,6 +6,7 @@ let spaceObjects: Array<SpaceObject> = [];
 let angleBeam = 0;
 let angleChangeDirection = true;
 const timeBaseValue = 1200;
+let spaceFont;
 
 
 // let sound: p5.SoundFile
@@ -16,6 +17,8 @@ const timeBaseValue = 1200;
  * sound files, images etc...
  */
 function preload() {
+    spaceFont = loadFont('/assets/fonts/space-silhouette-font-regular.ttf')
+
     images = {
         cockpit: loadImage('./assets/images/cockpit5.png'),
         asteroid: loadImage('./assets/images/asteroid.png'),

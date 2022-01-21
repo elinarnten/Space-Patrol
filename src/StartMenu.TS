@@ -9,6 +9,7 @@ class StartMenu {
     }
 
     public startGame() {
+        
     }
 
     public quitGame() {
