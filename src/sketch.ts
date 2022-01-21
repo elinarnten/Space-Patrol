@@ -57,10 +57,12 @@ function setup() {
 
 
 function keyTyped() {
-   
-     if (keyCode === 32) {
+         
+ 
+        
+     if (keyCode === 32 && spaceBar === false) {
          timerValue = 5
-         stroke(random(255), random(100, 200), random(100), random(200, 255));
+        stroke(random(255), random(100, 200), random(100), random(200, 255));
          spaceBar = true;
         
          console.log(timerValue)
@@ -68,6 +70,8 @@ function keyTyped() {
         
          //kallar på isActivated funktionen    
      }
+
+    
     
 }
      
@@ -84,6 +88,7 @@ function draw() {
 
     if(spaceBar) {
         isActivated.draw();
+        isActivated.update();
     }
   
     image(images.cockpit, 0, 0, width, height);
@@ -100,9 +105,9 @@ function draw() {
         angleChangeDirection = false
     }
 
-    if(angleBeam < 90 && angleChangeDirection == true) {
+    if(angleBeam < 90 && angleChangeDirection == true && spaceBar == false) {
         angleBeam = angleBeam + 1;
-    }   else if(angleChangeDirection == false) {
+    }   else if(angleChangeDirection == false && spaceBar == false) {
         angleBeam = angleBeam - 1;
         if (angleBeam <= -90) {
             angleChangeDirection = true;
