@@ -9,7 +9,7 @@ class StartMenu {
     }
 
     public startGame() {
-     textFont(spaceFont, [2])   
+    //  textFont(spaceFont, [2])   
     }
 
     public quitGame() {
