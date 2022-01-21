@@ -119,6 +119,7 @@ class Level {
         for (let object of spaceObjects) {
             object.draw();
         }
+        
 
     }
 }
