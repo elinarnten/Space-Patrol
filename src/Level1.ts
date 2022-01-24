@@ -25,7 +25,8 @@ class Level {
         this.objectSize = objectSize;
         this.amountOfObjects = amountOfObjects;
         this.levelGoal = levelGoal;
-        this.amountOfLivesLeft = amountOfLivesLeft; 
+        this.amountOfLivesLeft = amountOfLivesLeft;
+        this.generateSpaceObjects();
     }
 
     public getCurrentLevel() {
@@ -58,7 +59,7 @@ class Level {
 
     } */
 
-    public generateSpaceObjects() {
+    private generateSpaceObjects() {
 
         while(spaceObjects.length < 5) {
             let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
@@ -96,7 +97,7 @@ class Level {
     
 
     public goToNextLevel() {
-
+        // this.generateSpaceObjects();
     }
 
     public checkForDestroyedObjects() {
