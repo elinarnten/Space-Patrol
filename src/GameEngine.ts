@@ -4,8 +4,8 @@ class GameEngine {
     private topMenu: TopMenu;
     private pointSystem: PointSystem;
 
-    constructor(level: Level){
-        this.level = level;
+    constructor() {
+        this.level = new Level(120, 1, 1, 1, 20, 3);
         this.pointSystem = new PointSystem(3, 0)
         this.laserBeam = new LaserBeam();
         this.topMenu = new TopMenu(this.level, this.pointSystem);

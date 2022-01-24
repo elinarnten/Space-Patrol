@@ -13,13 +13,16 @@ class Game {
         this.gameState = {gameState: "start"};
         this.pauseMenu = new PauseMenu(this.gameState);
         this.startMenu = new StartMenu(this.gameState);
-        this.gameEngine = new GameEngine(new Level(120, 1, 1, 1, 20, 3));
+        this.gameEngine = new GameEngine();
         this.score = 0;
         this.gameOver = false;
         // this.isActivated = new IsActivated(false, angleBeam, createVector(width/2, height - 40));
 
     }
 
+    // private restartGame() {
+    //    this.gameEngine = new GameEngine();
+    // }
 
     public playSound() {
         

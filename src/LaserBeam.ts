@@ -1,12 +1,13 @@
 
 
 class LaserBeam { //change time name
-    private time: number;
+    private time: number = 5000;
     private isActivated: boolean;
     private hitsAsteroid: boolean; 
     private angle: number;
     private position: p5.Vector;
     private angleChangeDirection: boolean;
+    // private endPos: {x:number, y:number} = {x:0,y:0};
 
     constructor() {
         this.isActivated = false;
@@ -22,6 +23,7 @@ class LaserBeam { //change time name
         this.updateBeamAngle();
         
         if (keyIsDown(32) && !this.isActivated) {
+            
             this.isActivated = true;
         }
         
@@ -52,9 +54,13 @@ class LaserBeam { //change time name
 
         }
 
-        // if(this.isActivated) {
-        //     isActivated.update();
-        
+        // if (this.isActivated) {
+        //     let r = lerp(800, 1, this.time / 5000);
+        //     this.endPos = {
+        //         x: this.position.x + r * cos(this.angle),
+        //         y: this.position.y + r * sin(this.angle)
+        //     }
+        // }
     }
     
 
