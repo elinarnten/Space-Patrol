@@ -67,12 +67,7 @@ function keyTyped() {
      if (keyCode === 32 && spaceBar === false) {
          timerValue = 5
         stroke(random(255), random(100, 200), random(100), random(200, 255));
-         spaceBar = true;
-        
-         console.log(timerValue)
-         
-        
-         //kallar på isActivated funktionen    
+         spaceBar = true;   
      }
 
     
