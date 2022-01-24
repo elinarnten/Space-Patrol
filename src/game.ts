@@ -22,7 +22,7 @@ class Game {
 
     constructor(level: Level, score: number){
         this.level = new Level(120, 1, 1, 1, 20, 3);
-        this.pointSystem = new PointSystem(3)
+        this.pointSystem = new PointSystem(3, 0)
         this.topMenu = new TopMenu(this.level, this.pointSystem);
         this.gameState = {gameState: "start"};
         this.pauseMenu = new PauseMenu(this.gameState);
