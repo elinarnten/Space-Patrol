@@ -49,10 +49,6 @@ function setup() {
 
     // level, BaseAmountOfLives, Score
     game = new Game();
-    // level.generateSpaceObjects();
-    // isActivated = new IsActivated(false, angleBeam, createVector(width/2, height - 40));
-    
-
 }
      
 
@@ -65,11 +61,6 @@ function draw() {
     clear();
     game.update();
     game.draw();
-
-    if(spaceBar) {
-        isActivated.draw();
-        isActivated.update();
-    }
 }
 
 
