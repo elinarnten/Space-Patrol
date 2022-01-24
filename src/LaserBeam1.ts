@@ -15,6 +15,7 @@ class LaserBeam { //change time name
         this.position = createVector(width/2, height - 40);
         this.angleChangeDirection = true;
         this.time = 5000;
+        // isActivated = new IsActivated(false, angleBeam, createVector(width/2, height - 40));
     }
 
     public update() {
@@ -50,17 +51,22 @@ class LaserBeam { //change time name
             }
 
         }
+
+        
     }
     
 
     public draw() {
-        console.log('LASERBEAM');
         push();
         strokeWeight(10);
         translate(this.position.x, this.position.y);
         rotate(this.angle)
         line(0, 0, 0, -80)
         pop()
+
+        // if(this.isActivated) {
+        //     isActivated.draw();
+        // }
     }
 
 }
