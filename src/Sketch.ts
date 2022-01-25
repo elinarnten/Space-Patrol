@@ -3,9 +3,8 @@
 let game: Game;
 let images: Images;
 let startMenu: StartMenu;
-let spaceObjects: Array<SpaceObject> = []; 
-let spaceBar = false;
-let isActivated: IsActivated;
+// let spaceObjects: Array<SpaceObject> = [];
+let isActivated: LaserBeam;
 const timeBaseValue = 1200;
 let spaceFont;
 

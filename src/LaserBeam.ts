@@ -1,79 +1,52 @@
+class LaserBeam {
 
-
-class LaserBeam { //change time name
-    private time: number;
-    private isActivated: boolean;
-    private hitsAsteroid: boolean;
+    public hitsAsteroid: boolean;
     private angle: number;
-    private position: p5.Vector;
-    private angleChangeDirection: boolean;
+    private startPosition: p5.Vector;
+    private endPosition: p5.Vector
+    private beamLength: number;
     private gameEngine: GameEngine;
-    private shootingBeam: IsActivated | null;
+    private length: number;
 
-    constructor(gameEngine: GameEngine) {
-        this.isActivated = false;
-        this.hitsAsteroid = false;
-        this.angle = 0;
-        this.position = createVector(width / 2, height - 40);
-        this.angleChangeDirection = true;
-        this.time = 5000;
+    constructor(hitsAsteroid: boolean, angle: number, position: p5.Vector, gameEngine: GameEngine) {
+        this.hitsAsteroid = hitsAsteroid;
+        this.angle = angle;
+        this.startPosition = position;
+        this.endPosition = position;
+        this.beamLength = 0;
         this.gameEngine = gameEngine;
-        this.shootingBeam = null;
+        this.length = 1;
+    }
+
+    public getEndPosition() {
+        return this.endPosition.copy();
     }
 
     public update() {
-        this.updateBeamAngle();
-
-        if (keyIsDown(32) && !this.isActivated) {
-            this.isActivated = true;
-            this.shootingBeam = new IsActivated(false, this.angle, createVector(width / 2, height - 40), this.gameEngine);
+        this.beamLength = this.beamLength - 20;
+        if (frameCount % 60 === 0 && this.gameEngine.deltaTime > 0) {
+            this.gameEngine.deltaTime--;
         }
-
-        if (this.isActivated) {
-            this.time -= deltaTime;
-            if (this.time < 0) {
-                this.time = 5000;
-                this.isActivated = false;
-                this.shootingBeam = null;
-            }
+        if (this.gameEngine.deltaTime == 0) {
+            this.beamLength = 0;
         }
-    }
-
-    private updateBeamAngle() {
-        if (!this.isActivated) {
-            if (this.angle < 0 && this.angleChangeDirection == true) {
-                this.angleChangeDirection = true;
-
-            } else if (this.angle <= 180) {
-                this.angleChangeDirection = false
-            }
-
-            if (this.angle < 0 && this.angleChangeDirection == true && spaceBar == false) {
-                this.angle = this.angle + 1;
-            } else if (this.angleChangeDirection == false && spaceBar == false) {
-                this.angle = this.angle - 1;
-                if (this.angle <= -180) {
-                    this.angleChangeDirection = true;
-                }
-
-            }
+    
+        if (!this.hitsAsteroid) {
+            this.length += 10;
         }
-    }
-
-
-    public draw() {
-        push();
-        strokeWeight(10);
         
-        const endX = this.position.x+80* cos(this.angle);
-        const endY = this.position.y+80 * sin(this.angle);
-
-        line(width/2, height-40, endX, endY)
-        pop()
-
-        if (this.isActivated && this.shootingBeam) {
-            this.shootingBeam.draw();
-        }
+        this.endPosition = createVector(
+            this.startPosition.x + this.length * cos(this.angle),
+            this.startPosition.y + this.length * sin(this.angle)
+        )
     }
 
+
+    public draw() { 
+        push();
+        stroke('red');
+        strokeWeight(10);
+        line(this.startPosition.x, this.startPosition.y, this.endPosition.x, this.endPosition.y);
+        pop();
+    }
 }

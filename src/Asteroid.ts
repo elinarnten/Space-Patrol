@@ -7,6 +7,13 @@ class Asteroid extends SpaceObject {
         super(position, size, health, images.asteroid, true, explosionTimeOut);
         
     }
+    
+    public setDestroyed() {
+        super.setDestroyed();
+        // this.image = 
+        // byt till andra bilder
+        // starta animering
+    }
 
     public rotateAsteroid() {
         
