@@ -38,9 +38,11 @@ class IsActivated {
             const isHit = dist(this.endPosition.x, this.endPosition.y, spaceObject.position.x, spaceObject.position.y)
 
             if (isHit < spaceObject.size) {
+                console.log(spaceObject.health);
                 return spaceObject
             }
         }
+
 
         return false
     }
