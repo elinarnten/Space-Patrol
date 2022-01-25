@@ -27,8 +27,6 @@ class LaserBeam { //change time name
         if (keyIsDown(32) && !this.isActivated) {
             this.isActivated = true;
             this.shootingBeam = new IsActivated(false, this.angle, createVector(width / 2, height - 40), this.gameEngine);
-            console.log(this.angle)
-            console.log('isac')
         }
 
         if (this.isActivated) {
@@ -36,7 +34,6 @@ class LaserBeam { //change time name
             if (this.time < 0) {
                 this.time = 5000;
                 this.isActivated = false;
-                console.log('isnot')
                 this.shootingBeam = null;
             }
         }
@@ -61,14 +58,6 @@ class LaserBeam { //change time name
 
             }
         }
-
-        // if (this.isActivated) {
-        //     let r = lerp(800, 1, this.time / 5000);
-        //     this.endPos = {
-        //         x: this.position.x + r * cos(this.angle),
-        //         y: this.position.y + r * sin(this.angle)
-        //     }
-        // }
     }
 
 

@@ -27,23 +27,14 @@ class IsActivated {
 
     }
 
-    // hidden beam to first run how the other beam would go. To see position and check array.
-
-    // make a circle, move the circle 10px every framerate (60fps), 
-    //check every framerate if something is hit on x & y (check full array, size/2)
-    // use dist, and see if overlap
-    // get list of all hit objects from array, and look for the one with the lowest X value (ie the closest one)
-    // make explode, pop from array, add/remove points/lives
 
     public isCollision() {
         const hits: SpaceObject[] = []
 
         // need to calculate the end position of the "hidden beam", with given angle and given start position
         for (const spaceObject of spaceObjects) {
-            const d = dist(spaceObject.position.x, spaceObject.position.y, width / 2, height - 40);
-            console.log(d)
+            dist(spaceObject.position.x, spaceObject.position.y, width / 2, height - 40);
 
-            // const isHit = this.isBeamHittingObject(spaceObject)
             const isHit = dist(this.endPosition.x, this.endPosition.y, spaceObject.position.x, spaceObject.position.y)
 
             if (isHit < spaceObject.size) {
@@ -87,12 +78,8 @@ class IsActivated {
             this.startPosition.y + this.r * sin(this.angle)
         )
 
-        console.log(this.angle)
-
         line(this.startPosition.x, this.startPosition.y, this.endPosition.x, this.endPosition.y);
         pop();
-
-        console.log(this.startPosition.x, this.startPosition.y, this.endPosition.x, this.endPosition.y)
 
     }
 }

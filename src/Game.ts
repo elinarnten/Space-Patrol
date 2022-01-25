@@ -7,7 +7,6 @@ class Game {
     private gameState: GameState;
     private gameOver: boolean;
     private gameEngine: GameEngine;
-    // private isActivated: IsActivated;
 
     constructor() {
         this.gameState = {gameState: "start"};
@@ -16,8 +15,6 @@ class Game {
         this.gameEngine = new GameEngine();
         this.score = 0;
         this.gameOver = false;
-        // this.isActivated = new IsActivated(false, angleBeam, createVector(width/2, height - 40));
-
     }
 
     // private restartGame() {

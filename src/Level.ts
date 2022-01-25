@@ -42,8 +42,6 @@ class Level {
         }
 
         if (this.timeBaseValue === 0) {
-            
-            // run passLevel()
         }
     }
 
@@ -70,8 +68,6 @@ class Level {
             
             for(let j = 0; j < spaceObjects.length; j++) {
                 let other = spaceObjects[j];
-                console.log(asteroid.position);
-                console.log(spaceObjects);
                 let d = dist(asteroid.position.x, asteroid.position.y, other.position.x, other.position.y);
 
                 if(d < asteroid.size + other.size) {
@@ -111,7 +107,6 @@ class Level {
     public update() {
         for (let object of spaceObjects) {
             object.update();
-            // if(object instanceof Asteroid) use to check if bomb or asteroid
         }
 
     }
