@@ -49,6 +49,7 @@ class Game {
             
         this.level.draw();
         this.level.LevelCountDownTimer();
+        this.startMenu.startGame();
     }
 
 }
