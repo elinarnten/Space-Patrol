@@ -26,7 +26,6 @@ class GameEngine {
             if (isHit < spaceObject.size) {
                 // destroy asteroid ()
                 spaceObject.setDestroyed();
-
                 // update laserbeam
                 laserBeam.hitsAsteroid = true;
                 console.log(spaceObject.health);
@@ -34,11 +33,11 @@ class GameEngine {
         }
     }
 
-    private removeDestroyedObjects() {
+    public removeDestroyedObjects() {
         for (const spaceObject of this.level.spaceObjects) {
             if (spaceObject.isDestroyed) {
-                let index = this.level.spaceObjects.indexOf(spaceObject);
-                this.level.spaceObjects.splice(index, 1);
+                // let index = this.level.spaceObjects.indexOf(spaceObject);
+                // this.level.spaceObjects.splice(index, 1);
             }
         }
     }

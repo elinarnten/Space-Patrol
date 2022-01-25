@@ -2,4 +2,5 @@ interface Images {
     asteroid: p5.Image;
     bomb: p5.Image;
     cockpit: p5.Image;
+    explosion: p5.Image;
 }
