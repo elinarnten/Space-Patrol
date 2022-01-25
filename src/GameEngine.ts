@@ -21,11 +21,10 @@ class GameEngine {
         this.topMenu.update();
         this.level.update();
         this.laserBeam.update();
-        // this.level.LevelCountDownTimer();
+        this.level.LevelCountDownTimer();
     }
 
     public draw() {
-        // this.laserBeam.drawLaser();
         this.level.draw();
         image(images.cockpit, 0, 0, width, height);
         this.laserBeam.draw();
