@@ -22,7 +22,8 @@ function preload() {
     images = {
         cockpit: loadImage('./assets/images/cockpit5.png'),
         asteroid: loadImage('./assets/images/asteroid.png'),
-        bomb: loadImage('./assets/images/bomb.png')
+        bomb: loadImage('./assets/images/bomb.png'),
+        explosion: loadImage('./assets/images/explosion2.gif')
 
     }
 

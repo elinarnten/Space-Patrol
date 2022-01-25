@@ -9,6 +9,7 @@ abstract class SpaceObject {
     protected explosionTimeOut: number;
     protected angle = 0;
     public isDestroyed: boolean;
+
     
     
     constructor(position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, explosionTimeOut: number) {
@@ -18,14 +19,26 @@ abstract class SpaceObject {
         this.health = health;
         this.image = image;
         this.friendly = friendly;
-        this.explosionTimeOut = explosionTimeOut;
+        this.explosionTimeOut = 5000;
         this.isDestroyed = false;
     }
     
     public setDestroyed() {
         this.isDestroyed = true;
+
+
+        this.explosionAnimation()
+    
+        
     }
 
+    public explosionAnimation() {
+        this.image = images.explosion 
+    }
+
+
+
+    
     public shouldBeRemoved() {
 
 
