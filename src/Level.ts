@@ -62,7 +62,17 @@ class Level {
         while(spaceObjects.length < 5) {
             let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
             let size = random(25, 100);
-            let asteroid = new Asteroid(position, size, 1, 5)
+            let healthThing = 0;
+
+            if(size > 75) {
+                healthThing = 3
+            } else if(size > 75 && size > 50) {
+                healthThing = 2
+            } else if(size < 50) {
+                healthThing = 1
+            }
+            
+            let asteroid = new Asteroid(position, size, healthThing, 5)
 
             let overlapping = false;
             
