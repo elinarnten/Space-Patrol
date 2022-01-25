@@ -34,7 +34,7 @@ abstract class SpaceObject {
         translate(this.position.x, this.position.y);
         rotate(this.angle);
         imageMode(CENTER);
-        image(this.image, 0, 0, this.size * 2, this.size * 2);
+        image(this.image, 0, 0, this.size*2, this.size*2);
         pop();
     }
-}
+}  

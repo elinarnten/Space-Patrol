@@ -43,69 +43,17 @@ class IsActivated {
             const d = dist(spaceObject.position.x, spaceObject.position.y, width / 2, height - 40);
             console.log(d)
 
-            const isHit = this.isBeamHittingObject(spaceObject)
+            // const isHit = this.isBeamHittingObject(spaceObject)
+            const isHit = dist(this.endPosition.x, this.endPosition.y, spaceObject.position.x, spaceObject.position.y)
 
-            if (isHit) {
-                hits.push(spaceObject)
+            if (isHit < spaceObject.size) {
+                return spaceObject
             }
         }
 
-        const closestSpaceObject = this.checkClosestCollision(hits, width / 2, height - 40);
-        return closestSpaceObject;
+        return false
     }
 
-
-    public isBeamHittingObject(spaceObject: SpaceObject) {
-        let lengthOfBeam = (this.startPosition.x, this.startPosition.y, this.endPosition.x, this.endPosition.y);
-
-        let dot = (((spaceObject.position.x - this.startPosition.x) *
-            (this.endPosition.x - this.startPosition.x)) +
-            ((spaceObject.position.y - this.startPosition.y) *
-            (this.endPosition.y - this.startPosition.y))) / pow(lengthOfBeam, 2);
-
-            let closestX = this.startPosition.x + (dot * (this.endPosition.x - this.startPosition.x));
-            let closestY = this.startPosition.y + (dot * (this.endPosition.y - this.startPosition.y));
-            
-            let onSegment = this.linePoint(this.startPosition.x,this.startPosition.y,this.endPosition.x,this.endPosition.y, closestX,closestY);
-            if (!onSegment) return false;
-            
-            let distance = dist(closestX, closestY, spaceObject.position.x, spaceObject.position.y);
-            
-            let r = 20;
-            
-            if (distance <= r) {
-              return true;
-            }
-            return false;
-    }
-
-
-    public linePoint(x1: number, y1:number, x2:number, y2:number, px:number, py:number) {
-        let d1 = dist(px, py, x1, y1);
-        let d2 = dist(px, py, x2, y2);
-      
-        let lineLen = dist(x1, y1, x2, y2);
-      
-        let buffer = 0.5;
-      
-        if (d1 + d2 >= lineLen - buffer && d1 + d2 <= lineLen + buffer) {
-          return true;
-        }
-        return false;
-      
-      }
-
-    public checkClosestCollision(hits: SpaceObject[], x: number, y: number) {
-        const distances: number[] = hits.map(function (spaceObject) {
-            const distance = dist(spaceObject.position.x, spaceObject.position.y, x, y);
-            return distance;
-        })
-
-        const smallestDistance = Math.min(...distances)
-        const smallestIndex = distances.indexOf(smallestDistance)
-
-        return hits[smallestIndex]
-    }
 
     public update() {
         this.beamLength = this.beamLength - 20;
