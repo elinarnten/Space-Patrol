@@ -1,11 +1,18 @@
-/// <reference path='./spaceObject.ts'/>
+/// <reference path='./SpaceObject.ts'/>
 class Asteroid extends SpaceObject {
 
-    private isDestroyed: boolean;
+    
 
     constructor(position: p5.Vector, size: number, health: number, explosionTimeOut: number) {
         super(position, size, health, images.asteroid, true, explosionTimeOut);
-        this.isDestroyed = false;
+        
+    }
+    
+    public setDestroyed() {
+        super.setDestroyed();
+        // this.image = 
+        // byt till andra bilder
+        // starta animering
     }
 
     public rotateAsteroid() {

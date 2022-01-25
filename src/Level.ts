@@ -1,6 +1,5 @@
 class Level {
-
-    // public spaceObjects: Array<Asteroid> = [];
+    public spaceObjects: Array<Asteroid> = [];
 
 
     // Is this supporsed to be a func using timeBaseValue -1ms for every fps/loop.
@@ -25,7 +24,8 @@ class Level {
         this.objectSize = objectSize;
         this.amountOfObjects = amountOfObjects;
         this.levelGoal = levelGoal;
-        this.amountOfLivesLeft = amountOfLivesLeft; 
+        this.amountOfLivesLeft = amountOfLivesLeft;
+        this.generateSpaceObjects();
     }
 
     public getCurrentLevel() {
@@ -41,8 +41,6 @@ class Level {
         }
 
         if (this.timeBaseValue === 0) {
-            
-            // run passLevel()
         }
     }
 
@@ -58,19 +56,25 @@ class Level {
 
     } */
 
-    public generateSpaceObjects() {
+    private generateSpaceObjects() {
 
-        while(spaceObjects.length < 5) {
+        while(this.spaceObjects.length < 5) {
             let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
             let size = random(25, 100);
-            let asteroid = new Asteroid(position, size, 1, 5)
+            let healthLevel = 1;
+
+            if(size > 75) {
+                healthLevel = 3
+            } else if(size > 75 && size > 50) {
+                healthLevel = 2
+            }
+
+            let asteroid = new Asteroid(position, size, healthLevel, 5)
 
             let overlapping = false;
             
-            for(let j = 0; j < spaceObjects.length; j++) {
-                let other = spaceObjects[j];
-                console.log(asteroid.position);
-                console.log(spaceObjects);
+            for(let j = 0; j < this.spaceObjects.length; j++) {
+                let other = this.spaceObjects[j];
                 let d = dist(asteroid.position.x, asteroid.position.y, other.position.x, other.position.y);
 
                 if(d < asteroid.size + other.size) {
@@ -81,7 +85,7 @@ class Level {
             }
 
             if(!overlapping) {
-                spaceObjects.push(asteroid);
+                this.spaceObjects.push(asteroid);
             }
 
         }
@@ -96,7 +100,7 @@ class Level {
     
 
     public goToNextLevel() {
-
+        // this.generateSpaceObjects();
     }
 
     public checkForDestroyedObjects() {
@@ -108,15 +112,14 @@ class Level {
     }
 
     public update() {
-        for (let object of spaceObjects) {
+        for (let object of this.spaceObjects) {
             object.update();
-            // if(object instanceof Asteroid) use to check if bomb or asteroid
         }
 
     }
 
     public draw() {
-        for (let object of spaceObjects) {
+        for (let object of this.spaceObjects) {
             object.draw();
         }
         

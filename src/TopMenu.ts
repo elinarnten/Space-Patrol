@@ -59,6 +59,6 @@ class TopMenu {
     }
 
     public draw() {
-    }
+    } 
 
 }

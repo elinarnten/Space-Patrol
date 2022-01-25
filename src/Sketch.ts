@@ -1,14 +1,10 @@
 
 //---- GLOBAL VARIABLES ----//
-let timerValue = 5;
 let game: Game;
 let images: Images;
 let startMenu: StartMenu;
-let spaceObjects: Array<SpaceObject> = []; 
-let angleBeam = 0;
-let angleChangeDirection = true;
-let spaceBar = false;
-let isActivated: IsActivated;
+// let spaceObjects: Array<SpaceObject> = [];
+let isActivated: LaserBeam;
 const timeBaseValue = 1200;
 let spaceFont;
 
@@ -48,30 +44,10 @@ function setup() {
     // noCursor();
     
     // level base stats, time, levelvalue, objectsize, amountofobjects, levelgoal, amountoflives
-    const level = new Level(1200, 1, 1, 1, 20, 3)
     // const timeBaseValue = timeBaseValue(200)
 
     // level, BaseAmountOfLives, Score
-    game = new Game(level, 0);
-    level.generateSpaceObjects();
-    isActivated = new IsActivated(false, angleBeam, createVector(width/2, height - 40));
-    
-
-}
-
-
-function keyTyped() {
-         
- 
-        
-     if (keyCode === 32 && spaceBar === false) {
-         timerValue = 5
-        stroke(random(255), random(100, 200), random(100), random(200, 255));
-         spaceBar = true;   
-     }
-
-    
-    
+    game = new Game();
 }
      
 
@@ -84,41 +60,6 @@ function draw() {
     clear();
     game.update();
     game.draw();
-
-    if(spaceBar) {
-        isActivated.draw();
-        isActivated.update();
-    }
-  
-    image(images.cockpit, 0, 0, width, height);
-    
-    push();
-    strokeWeight(10);
-    translate(width/2, height - 40);
-    rotate(angleBeam)
-    line(0, 0, 0, -80)
-    if(angleBeam < 90 && angleChangeDirection == true) {
-        angleChangeDirection = true;
-        
-    } else if (angleBeam <= 90) {
-        angleChangeDirection = false
-    }
-
-    if(angleBeam < 90 && angleChangeDirection == true && spaceBar == false) {
-        angleBeam = angleBeam + 1;
-    }   else if(angleChangeDirection == false && spaceBar == false) {
-        angleBeam = angleBeam - 1;
-        if (angleBeam <= -90) {
-            angleChangeDirection = true;
-        }
-
-    }
-    pop()
-
-   
-
-   
-    
 }
 
 
