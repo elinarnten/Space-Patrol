@@ -6,9 +6,10 @@ abstract class SpaceObject {
     public health: number;
     protected image: p5.Image;
     protected friendly: boolean;
-    protected explosionTimeOut: number;
+    public explosionTimeOut: number;
     protected angle = 0;
     public isDestroyed: boolean;
+    private testTimer: number
 
     
     
@@ -19,8 +20,9 @@ abstract class SpaceObject {
         this.health = health;
         this.image = image;
         this.friendly = friendly;
-        this.explosionTimeOut = 5000;
+        this.explosionTimeOut = 5;
         this.isDestroyed = false;
+        this.testTimer = 3;
     }
     
     public setDestroyed() {
@@ -32,8 +34,20 @@ abstract class SpaceObject {
         
     }
 
-    public explosionAnimation() {
-        this.image = images.explosion 
+    public explosionAnimation()  {
+        let i = 0;
+        
+        this.image = images.explosions[i];
+
+        if (frameCount % 60 === 0 && this.testTimer > 0) {
+            this.testTimer--;
+        }
+        if (this.testTimer == 0) {
+            i++;
+            this.testTimer = 3;
+        }
+
+
     }
 
 

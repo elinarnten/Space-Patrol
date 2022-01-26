@@ -29,6 +29,9 @@ class GameEngine {
                 // update laserbeam
                 laserBeam.hitsAsteroid = true;
                 console.log(spaceObject.health);
+               
+
+                
             }
         }
     }
@@ -36,11 +39,20 @@ class GameEngine {
     public removeDestroyedObjects() {
         for (const spaceObject of this.level.spaceObjects) {
             if (spaceObject.isDestroyed) {
-                // let index = this.level.spaceObjects.indexOf(spaceObject);
-                // this.level.spaceObjects.splice(index, 1);
+
+                    let index = this.level.spaceObjects.indexOf(spaceObject);
+                    this.level.spaceObjects.splice(index, 1);
+
+
+                    
+
+
+                
             }
         }
     }
+
+
 
     public update() {
         this.topMenu.update();
@@ -48,7 +60,27 @@ class GameEngine {
         this.cockpit.update();
         this.level.LevelCountDownTimer(); 
         this.checkCollision();
-        this.removeDestroyedObjects();
+        // this.removeDestroyedObjects()
+
+        // for (const spaceObject of this.level.spaceObjects) {
+        //     if (spaceObject.isDestroyed) {
+        //        spaceObject.explosionTimeOut -= .1;
+        //        if (spaceObject.explosionTimeOut < 0) {
+        //             this.removeDestroyedObjects()
+        //        }
+                
+        //     }
+        // }
+
+        // if (this.isActivated) {
+        //     this.time -= deltaTime;
+        //     if (this.time < 0) {
+        //         this.time = 5000;
+        //         this.isActivated = false;
+        //         delete this.laserBeam;
+        //     }
+        // }
+        
     }
 
     public draw() {

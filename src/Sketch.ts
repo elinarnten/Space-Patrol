@@ -23,9 +23,22 @@ function preload() {
         cockpit: loadImage('./assets/images/cockpit5.png'),
         asteroid: loadImage('./assets/images/asteroid.png'),
         bomb: loadImage('./assets/images/bomb.png'),
-        explosion: loadImage('./assets/images/explosion2.gif')
+        explosions: [loadImage('./assets/images/explosion/1.png'), loadImage('./assets/images/explosion/2.png'), loadImage('./assets/images/explosion/3.png'),
+                    loadImage('./assets/images/explosion/4.png'), loadImage('./assets/images/explosion/5.png'), loadImage('./assets/images/explosion/6.png'),
+                    loadImage('./assets/images/explosion/7.png'), loadImage('./assets/images/explosion/8.png'), loadImage('./assets/images/explosion/9.png') ]
+        // explosion1: loadImage('./assets/images/explosion/1'),
+        // explosion2: loadImage('./assets/images/explosion/2'),
+        // explosion3: loadImage('./assets/images/explosion/3'),
+        // explosion4: loadImage('./assets/images/explosion/4'),
+        // explosion5: loadImage('./assets/images/explosion/5'),
+        // explosion6: loadImage('./assets/images/explosion/6'),
+        // explosion7: loadImage('./assets/images/explosion/7'),
+        // explosion8: loadImage('./assets/images/explosion/8'),
+        // explosion9: loadImage('./assets/images/explosion/9')
+
 
     }
+    
 
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
 
