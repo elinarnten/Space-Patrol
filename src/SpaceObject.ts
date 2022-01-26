@@ -31,10 +31,10 @@ abstract class SpaceObject {
     }
 
     public explosionAnimation() {
-        let i = 0;
+        // let i = 0;
 
-        for (i = 1; i < 8; i++) { 
-            if (frameCount % 20 === 0 && this.testTimer > 0) {
+        for (let i = 1; i < 8; i++) { 
+            if (frameCount % 30 === 0 && this.testTimer > 0) {
                 this.testTimer--;
                 
             }

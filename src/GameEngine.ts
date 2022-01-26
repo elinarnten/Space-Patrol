@@ -59,27 +59,15 @@ class GameEngine {
         this.cockpit.update();
         this.level.LevelCountDownTimer(); 
         this.checkCollision();
-        // this.removeDestroyedObjects()
-
-        // for (const spaceObject of this.level.spaceObjects) {
-        //     if (spaceObject.isDestroyed) {
-        //        spaceObject.explosionTimeOut -= .1;
-        //        if (spaceObject.explosionTimeOut < 0) {
-        //             this.removeDestroyedObjects()
-        //        }
-                
-        //     }
-        // }
-
-        // if (this.isActivated) {
-        //     this.time -= deltaTime;
-        //     if (this.time < 0) {
-        //         this.time = 5000;
-        //         this.isActivated = false;
-        //         delete this.laserBeam;
-        //     }
-        // }
-        
+        this.removeDestroyedObjects
+        for (const spaceObject of this.level.spaceObjects) {
+            if (spaceObject.isDestroyed) {
+               spaceObject.explosionTimeOut -= .02;
+               if (spaceObject.explosionTimeOut < 0) {
+                    this.removeDestroyedObjects()
+               }
+            }
+        }
     }
 
     public draw() {
