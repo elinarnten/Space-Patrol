@@ -27,8 +27,10 @@ class GameEngine {
                 // destroy asteroid ()
                 spaceObject.setDestroyed();
                 // update laserbeam
-                laserBeam.hitsAsteroid = true;
-                console.log(spaceObject.health);
+                laserBeam.hitsAsteroid = true;                
+                //console.log(spaceObject.health);
+               
+
             }
         }
     }
@@ -36,11 +38,20 @@ class GameEngine {
     public removeDestroyedObjects() {
         for (const spaceObject of this.level.spaceObjects) {
             if (spaceObject.isDestroyed) {
-                // let index = this.level.spaceObjects.indexOf(spaceObject);
-                // this.level.spaceObjects.splice(index, 1);
+
+                    let index = this.level.spaceObjects.indexOf(spaceObject);
+                    this.level.spaceObjects.splice(index, 1);
+
+
+                    
+
+
+                
             }
         }
     }
+
+
 
     public update() {
         this.topMenu.update();
@@ -48,7 +59,16 @@ class GameEngine {
         this.cockpit.update();
         this.level.LevelCountDownTimer(); 
         this.checkCollision();
-        this.removeDestroyedObjects();
+        this.removeDestroyedObjects
+        for (const spaceObject of this.level.spaceObjects) {
+            if (spaceObject.isDestroyed) {
+                // This updates 60 times a second, we want the object removed from array after 5 seconds. 60 x 5 = 300. 5 / 300 = 0.0166666666666667
+               spaceObject.explosionTimeOut -= 0.05;
+               if (spaceObject.explosionTimeOut < 0) {
+                    this.removeDestroyedObjects()
+               }
+            }
+        }
     }
 
     public draw() {
