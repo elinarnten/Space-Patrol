@@ -62,7 +62,8 @@ class GameEngine {
         this.removeDestroyedObjects
         for (const spaceObject of this.level.spaceObjects) {
             if (spaceObject.isDestroyed) {
-               spaceObject.explosionTimeOut -= .02;
+                // This updates 60 times a second, we want the object removed from array after 5 seconds. 60 x 5 = 300. 5 / 300 = 0.0166666666666667
+               spaceObject.explosionTimeOut -= 0.05;
                if (spaceObject.explosionTimeOut < 0) {
                     this.removeDestroyedObjects()
                }

@@ -13,7 +13,7 @@ abstract class SpaceObject {
 
 
 
-    constructor(position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, explosionTimeOut: number) {
+    constructor(position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean) {
 
         this.position = position;
         this.size = size;
@@ -22,7 +22,7 @@ abstract class SpaceObject {
         this.friendly = friendly;
         this.explosionTimeOut = 5;
         this.isDestroyed = false;
-        this.testTimer = 8;
+        this.testTimer = 9;
     }
 
     public setDestroyed() {
@@ -33,14 +33,14 @@ abstract class SpaceObject {
     public explosionAnimation() {
         // let i = 0;
 
-        for (let i = 1; i < 8; i++) { 
-            if (frameCount % 30 === 0 && this.testTimer > 0) {
+        for (let i = 1; i < 9; i++) { 
+            if (frameCount % 10 === 0 && this.testTimer > 0) {
                 this.testTimer--;
                 
             }
             if (this.testTimer == 0) {
                 this.image = images.explosions[i];
-                this.testTimer = 8;
+                this.testTimer = 9;
             }
         }
     }

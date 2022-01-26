@@ -1,5 +1,5 @@
 class Level {
-    public spaceObjects: Array<Asteroid> = [];
+    public spaceObjects: Array<Asteroid | Bomb> = [];
 
 
     // Is this supporsed to be a func using timeBaseValue -1ms for every fps/loop.
@@ -69,7 +69,7 @@ class Level {
                 healthLevel = 2
             }
 
-            let asteroid = new Asteroid(position, size, healthLevel, 5)
+            let asteroid = new Asteroid(position, size, healthLevel)
 
             let overlapping = false;
             
@@ -79,13 +79,39 @@ class Level {
 
                 if(d < asteroid.size + other.size) {
                     //then they are overlapping
-                    overlapping = true;
+                    overlapping = true; 
                     
                 }
             }
 
             if(!overlapping) {
                 this.spaceObjects.push(asteroid);
+            }
+
+        }
+
+        // Bomb generator
+        while(this.spaceObjects.length < 7) {
+            let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
+            
+            
+            let bomb = new Bomb(position)
+
+            let overlapping = false;
+            
+            for(let j = 0; j < this.spaceObjects.length; j++) {
+                let other = this.spaceObjects[j];
+                let d = dist(bomb.position.x, bomb.position.y, other.position.x, other.position.y);
+
+                if(d < bomb.size + other.size) {
+                    //then they are overlapping
+                    overlapping = true;
+                    
+                }
+            }
+
+            if(!overlapping) {
+                this.spaceObjects.push(bomb);
             }
 
         }
