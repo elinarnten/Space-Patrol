@@ -1,6 +1,6 @@
 abstract class SpaceObject {
 
-    
+
     public position: p5.Vector;
     public size: number;
     public health: number;
@@ -11,10 +11,10 @@ abstract class SpaceObject {
     public isDestroyed: boolean;
     private testTimer: number
 
-    
-    
+
+
     constructor(position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, explosionTimeOut: number) {
-        
+
         this.position = position;
         this.size = size;
         this.health = health;
@@ -22,46 +22,41 @@ abstract class SpaceObject {
         this.friendly = friendly;
         this.explosionTimeOut = 5;
         this.isDestroyed = false;
-        this.testTimer = 3;
+        this.testTimer = 8;
     }
-    
+
     public setDestroyed() {
         this.isDestroyed = true;
-
-
         this.explosionAnimation()
-    
-        
     }
 
-    public explosionAnimation()  {
+    public explosionAnimation() {
         let i = 0;
-        
-        this.image = images.explosions[i];
 
-        if (frameCount % 60 === 0 && this.testTimer > 0) {
-            this.testTimer--;
+        for (i = 1; i < 8; i++) { 
+            if (frameCount % 20 === 0 && this.testTimer > 0) {
+                this.testTimer--;
+                
+            }
+            if (this.testTimer == 0) {
+                this.image = images.explosions[i];
+                this.testTimer = 8;
+            }
         }
-        if (this.testTimer == 0) {
-            i++;
-            this.testTimer = 3;
-        }
-
-
     }
 
 
 
-    
+
     public shouldBeRemoved() {
 
 
     }
-    
+
 
     public update() {
         this.angle = this.angle + 1;
-        
+
     }
 
     public draw() {
@@ -69,7 +64,7 @@ abstract class SpaceObject {
         translate(this.position.x, this.position.y);
         rotate(this.angle);
         imageMode(CENTER);
-        image(this.image, 0, 0, this.size*2, this.size*2);
+        image(this.image, 0, 0, this.size * 2, this.size * 2);
         pop();
     }
 }  

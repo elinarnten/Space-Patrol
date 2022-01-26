@@ -27,11 +27,10 @@ class GameEngine {
                 // destroy asteroid ()
                 spaceObject.setDestroyed();
                 // update laserbeam
-                laserBeam.hitsAsteroid = true;
-                console.log(spaceObject.health);
+                laserBeam.hitsAsteroid = true;                
+                //console.log(spaceObject.health);
                
 
-                
             }
         }
     }

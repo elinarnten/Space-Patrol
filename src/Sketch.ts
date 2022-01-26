@@ -23,9 +23,17 @@ function preload() {
         cockpit: loadImage('./assets/images/cockpit5.png'),
         asteroid: loadImage('./assets/images/asteroid.png'),
         bomb: loadImage('./assets/images/bomb.png'),
-        explosions: [loadImage('./assets/images/explosion/1.png'), loadImage('./assets/images/explosion/2.png'), loadImage('./assets/images/explosion/3.png'),
-                    loadImage('./assets/images/explosion/4.png'), loadImage('./assets/images/explosion/5.png'), loadImage('./assets/images/explosion/6.png'),
-                    loadImage('./assets/images/explosion/7.png'), loadImage('./assets/images/explosion/8.png'), loadImage('./assets/images/explosion/9.png') ]
+        explosions: [
+            loadImage('./assets/images/explosion/1.png'),
+            loadImage('./assets/images/explosion/2.png'),
+            loadImage('./assets/images/explosion/3.png'),
+            loadImage('./assets/images/explosion/4.png'),
+            loadImage('./assets/images/explosion/5.png'),
+            loadImage('./assets/images/explosion/6.png'),
+            loadImage('./assets/images/explosion/7.png'),
+            loadImage('./assets/images/explosion/8.png'),
+            loadImage('./assets/images/explosion/9.png')
+        ]
         // explosion1: loadImage('./assets/images/explosion/1'),
         // explosion2: loadImage('./assets/images/explosion/2'),
         // explosion3: loadImage('./assets/images/explosion/3'),
@@ -38,11 +46,11 @@ function preload() {
 
 
     }
-    
+
 
     // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
 
-    
+
 }
 
 /**
@@ -52,18 +60,18 @@ function preload() {
  * in the draw function below
  */
 function setup() {
-    createCanvas(windowWidth, windowHeight-80);
+    createCanvas(windowWidth, windowHeight - 80);
     angleMode(DEGREES);
     frameRate(60);
     // noCursor();
-    
+
     // level base stats, time, levelvalue, objectsize, amountofobjects, levelgoal, amountoflives
     // const timeBaseValue = timeBaseValue(200)
 
     // level, BaseAmountOfLives, Score
     game = new Game();
 }
-     
+
 
 /**
  * Built in draw function in P5
@@ -81,5 +89,5 @@ function draw() {
  *  Built in windowResize listener function in P5
  */
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight-80);
+    resizeCanvas(windowWidth, windowHeight - 80);
 }
