@@ -76,7 +76,7 @@ class Level {
 
             if(size > 75) {
                 healthLevel = 3
-            } else if(size > 75 && size > 50) {
+            } else if(size < 75 && size > 50) {
                 healthLevel = 2
             }
 
