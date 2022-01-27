@@ -1,0 +1,37 @@
+#pauseMenuContainer {
+    background-color: #414141;
+    border: solid 2px #FAFF00;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #FAFF00;
+    height: 13rem;
+    width: 23rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#resumeButton, #restartButton, #aboutButton, #quitButton {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: #FAFF00;
+    border: none;
+    background: none;
+}
+
+#resumeButton:hover, #restartButton:hover, #aboutButton:hover, #quitButton:hover {
+    color: orange;
+}
+
+canvas {
+    filter: blur(4px);
+}
+
+#topMenuContainer {
+    display: none;
+}
