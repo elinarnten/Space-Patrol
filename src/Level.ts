@@ -8,7 +8,7 @@ class Level {
     private objectSize: number;
     private amountOfObjects: number;
     private levelGoal: number;
-    private amountOfLivesLeft: number;
+    public amountOfLivesLeft: number;
 
 
     constructor(
