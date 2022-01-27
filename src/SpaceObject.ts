@@ -9,7 +9,7 @@ abstract class SpaceObject {
     public explosionTimeOut: number;
     protected angle = 0;
     public isDestroyed: boolean;
-    private testTimer: number
+    private changeImageTimer: number
 
 
 
@@ -22,28 +22,34 @@ abstract class SpaceObject {
         this.friendly = friendly;
         this.explosionTimeOut = 5;
         this.isDestroyed = false;
-        this.testTimer = 9;
+        this.changeImageTimer = 9;
     }
 
     public setDestroyed() {
-        this.isDestroyed = true;
         this.explosionAnimation()
     }
 
     public explosionAnimation() {
         // let i = 0;
+        console.log('animating boom')
+        console.log(this.changeImageTimer)
+        console.log(this.image)
+        console.log('framecount', frameCount)
 
-        for (let i = 1; i < 9; i++) { 
-            if (frameCount % 10 === 0 && this.testTimer > 0) {
-                this.testTimer--;
-                
+        let i = 1;
+        const timer = window.setInterval(()=>{
+            if (i === 9){
+                window.clearInterval(timer)
+                this.isDestroyed = true;
             }
-            if (this.testTimer == 0) {
-                this.image = images.explosions[i];
-                this.testTimer = 9;
-            }
-        }
+            i++;
+            this.image = images.explosions[i];
+            console.log('changing image')
+        }, 200)
+
+        console.log(this.image)
     }
+
 
 
 
