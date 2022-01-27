@@ -3,8 +3,8 @@ class Asteroid extends SpaceObject {
 
     
 
-    constructor(position: p5.Vector, size: number, health: number) {
-        super(position, size, health, images.asteroid, true);
+    constructor(position: p5.Vector, size: number, health: number, score: number) {
+        super(position, size, health, images.asteroid, true, score);
         
     }
     
