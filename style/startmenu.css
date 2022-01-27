@@ -20,7 +20,8 @@ h1 {
 .startMenuContainer {
     line-height: .5;
     position: absolute;
-    top: 0;
+    top: 50%;
+    left: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;

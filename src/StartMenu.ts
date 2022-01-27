@@ -18,7 +18,7 @@ class StartMenu {
         const startMenuContainer = document.createElement ('div') as HTMLDivElement;
         startMenuContainer.classList.add('startMenuContainer');
         document.body.appendChild(startMenuContainer);
-        startMenuContainer.style.transform = 'translateX(50%)';
+        startMenuContainer.style.transform = 'translate(-50%, -50%)';
         
         const logoContainer = document.createElement('div') as HTMLDivElement;
         const logoTopText = document.createElement('h1') as HTMLHeadingElement;
