@@ -27,7 +27,8 @@ class GameEngine {
                 // destroy asteroid ()
                 spaceObject.setDestroyed();
                 // update laserbeam
-                laserBeam.hitsAsteroid = true;                
+                laserBeam.hitsAsteroid = true; 
+                
                 //console.log(spaceObject.health);
                
 
@@ -38,6 +39,10 @@ class GameEngine {
     public removeDestroyedObjects() {
         for (const spaceObject of this.level.spaceObjects) {
             if (spaceObject.isDestroyed) {
+
+                if(spaceObject instanceof Bomb) {
+                    this.level.amountOfLivesLeft = this.level.amountOfLivesLeft - 1;
+                }
 
                     let index = this.level.spaceObjects.indexOf(spaceObject);
                     this.level.spaceObjects.splice(index, 1);
