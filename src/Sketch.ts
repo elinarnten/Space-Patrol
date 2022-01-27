@@ -5,7 +5,7 @@ let images: Images;
 let startMenu: StartMenu;
 // let spaceObjects: Array<SpaceObject> = [];
 let isActivated: LaserBeam;
-const timeBaseValue = 1200;
+const timeBaseValue = 600;
 let spaceFont;
 
 

@@ -40,8 +40,19 @@ class Level {
             this.timeBaseValue--;
         }
 
+        // when the level-timer (timeBaseValue) reach 0, this happens
         if (this.timeBaseValue === 0) {
-        }
+            textSize(300);
+            text('TIME IS OUT!', 100, 500);
+            fill(250, 255, 0);
+
+            // run "next level menu thing"
+            // Score:  xxx/xxx
+            // Lives left: xx/xx
+            // If score met, generate new level
+            // if score not met, add GAME OVER state
+        } 
+        
     }
 
     public getLevelGoal() {
