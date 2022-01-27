@@ -1,6 +1,6 @@
 class PointSystem {
     private baseAmountOfLives: number;
-    private score: number;
+    public score: number;
 
     constructor(baseAmountOfLives: number, score: number){
         this.baseAmountOfLives = baseAmountOfLives;

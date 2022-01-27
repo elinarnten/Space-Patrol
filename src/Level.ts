@@ -73,6 +73,7 @@ class Level {
             let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
             let size = random(25, 100);
             let healthLevel = 1;
+            let score = 5;
 
             if(size > 75) {
                 healthLevel = 3
@@ -80,7 +81,11 @@ class Level {
                 healthLevel = 2
             }
 
-            let asteroid = new Asteroid(position, size, healthLevel)
+            score = score * healthLevel;
+
+
+
+            let asteroid = new Asteroid(position, size, healthLevel, score)
 
             let overlapping = false;
             
