@@ -1,13 +1,10 @@
 class TopMenu {
 
     private level: Level;
-    private pointSystem: PointSystem;
-    // private game: Game;
 
 
-    constructor(level: Level, pointSystem: PointSystem) {
+    constructor(level: Level) {
         this.level = level;
-        this.pointSystem = pointSystem;
         this.addTopMenuContainer();
     }
 
@@ -54,9 +51,9 @@ class TopMenu {
         const timeLeft = this.level.getTimeBaseValue()
 
         levelContainer.innerText = `Level: ${this.level.getCurrentLevel()}`;
-        scoreContainer.innerText = `Score:${this.pointSystem.getScore()}/${this.level.getLevelGoal()}`;
-        livesContainer.innerText = `Lives: ${this.level.getAmountOfLivesLeft()} / ${this.pointSystem.getBaseAmountOfLives()}`;
-        timerContainer.innerHTML = `Time to destruction: <span>${timeLeft}</span>`
+        scoreContainer.innerText = `Score:${this.level.score}/${this.level.getLevelGoal()}`;
+        livesContainer.innerText = `Lives: ${this.level.getAmountOfLivesLeft()} / 3`;
+        timerContainer.innerHTML = `Time to destruction: <span>${timeLeft.toFixed(0)}</span>`
         if (timeLeft <= 10){
             timerContainer.classList.add('danger');
         }
