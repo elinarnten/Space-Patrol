@@ -1,6 +1,7 @@
 class StartMenu {
     private game: IGame;
     private startMenuContainer!: HTMLDivElement;
+    private aboutGameContainer!: HTMLDivElement;
 
     constructor(game: IGame) {
         this.game = game; 
@@ -10,6 +11,7 @@ class StartMenu {
     
     public open() {
         //  textFont(spaceFont, [2])   
+
         
         this.startMenuContainer = document.createElement ('div') as HTMLDivElement;
         this.startMenuContainer.classList.add('startMenuContainer');
@@ -45,9 +47,8 @@ class StartMenu {
         aboutButton.style.fontFamily = 'russo one';
         aboutButton.addEventListener('click', () => this.aboutGame())
         this.startMenuContainer.appendChild(aboutButton);
-
-      
-      
+        
+        this.aboutGameContainer.remove();
     }
 
     private startGame() {
@@ -56,17 +57,18 @@ class StartMenu {
     }
 
     public quitGame() {
+
     }
 
     public aboutGame() {
 
         this.startMenuContainer.remove();
-        const aboutGameContainer = document.createElement('div') as HTMLDivElement;
-        aboutGameContainer.id = 'aboutGameContainer';
-        document.body.appendChild(aboutGameContainer);
+        this.aboutGameContainer = document.createElement('div') as HTMLDivElement;
+        this.aboutGameContainer.id = 'aboutGameContainer';
+        document.body.appendChild(this.aboutGameContainer);
 
         const aboutGameInnerContainer = document.createElement('div') as HTMLDivElement;
-        aboutGameContainer.appendChild(aboutGameInnerContainer);
+        this.aboutGameContainer.appendChild(aboutGameInnerContainer);
         aboutGameInnerContainer.id = 'aboutGameInnerContainer';
         
         const aboutHeadingDiv = document.createElement('div') as HTMLDivElement;    
@@ -87,12 +89,17 @@ class StartMenu {
         backButton.id = 'backButton';
         backButton.innerHTML = 'BACK';
         buttonDiv.appendChild(backButton);
+        backButton.addEventListener('click', () => this.open())
+   
+
+       
     }
 
     public playerName() {
     }
 
     public update() {
+
     }
 
     public draw() {
