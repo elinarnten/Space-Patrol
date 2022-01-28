@@ -11,8 +11,6 @@ class StartMenu {
     
     public open() {
         //  textFont(spaceFont, [2])   
-
-        
         this.startMenuContainer = document.createElement ('div') as HTMLDivElement;
         this.startMenuContainer.classList.add('startMenuContainer');
         document.body.appendChild(this.startMenuContainer);
@@ -46,9 +44,7 @@ class StartMenu {
         aboutButton.innerHTML = 'ABOUT';
         aboutButton.style.fontFamily = 'russo one';
         aboutButton.addEventListener('click', () => this.aboutGame())
-        this.startMenuContainer.appendChild(aboutButton);
-        
-        this.aboutGameContainer.remove();
+        this.startMenuContainer.appendChild(aboutButton); 
     }
 
     private startGame() {
@@ -57,7 +53,6 @@ class StartMenu {
     }
 
     public quitGame() {
-
     }
 
     public aboutGame() {
@@ -88,18 +83,15 @@ class StartMenu {
         const backButton = document.createElement('button');
         backButton.id = 'backButton';
         backButton.innerHTML = 'BACK';
+        backButton.addEventListener('click', () => this.open(this.aboutGameContainer.remove()));
         buttonDiv.appendChild(backButton);
-        backButton.addEventListener('click', () => this.open())
-   
-
-       
+        
     }
 
     public playerName() {
     }
 
     public update() {
-
     }
 
     public draw() {
