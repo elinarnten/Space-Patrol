@@ -2,14 +2,16 @@ class StartMenu {
     private game: IGame;
     private startMenuContainer!: HTMLDivElement;
     private aboutGameContainer!: HTMLDivElement;
+    //private pauseMenu: PauseMenu;
 
     constructor(game: IGame) {
         this.game = game; 
         // eventually this might not be needed
-        this.open();
+        this.openMenu();
+        //this.pauseMenu = new PauseMenu(game); 
     }
     
-    public open() {
+    public openMenu() {
         //  textFont(spaceFont, [2])   
         this.startMenuContainer = document.createElement ('div') as HTMLDivElement;
         this.startMenuContainer.classList.add('startMenuContainer');
@@ -47,9 +49,10 @@ class StartMenu {
         this.startMenuContainer.appendChild(aboutButton); 
     }
 
-    private startGame() {
+    public startGame() {
         this.game.gameState = "running";
         this.startMenuContainer.remove();
+        //this.pauseMenu.remove();
     }
 
     public quitGame() {
@@ -57,7 +60,6 @@ class StartMenu {
 
     public aboutGame() {
 
-        this.startMenuContainer.remove();
         this.aboutGameContainer = document.createElement('div') as HTMLDivElement;
         this.aboutGameContainer.id = 'aboutGameContainer';
         document.body.appendChild(this.aboutGameContainer);
@@ -83,7 +85,7 @@ class StartMenu {
         const backButton = document.createElement('button');
         backButton.id = 'backButton';
         backButton.innerHTML = 'BACK';
-        backButton.addEventListener('click', () => this.open(this.aboutGameContainer.remove()));
+        backButton.addEventListener('click', () => this.aboutGameContainer.remove());
         buttonDiv.appendChild(backButton);
         
     }
