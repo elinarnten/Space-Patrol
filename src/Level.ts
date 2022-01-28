@@ -6,7 +6,6 @@ class Level {
     private timeBaseValue: number;
     private levelValue: number;
     private objectSize: number;
-    private amountOfObjects: number;
     private levelGoal: number;
     public amountOfLivesLeft: number;
 
@@ -15,14 +14,12 @@ class Level {
         timeBaseValue: number,
         levelValue: number,
         objectSize: number,
-        amountOfObjects: number,
         levelGoal: number,
         amountOfLivesLeft: number,
     ) {
         this.timeBaseValue = timeBaseValue;
         this.levelValue = levelValue;
         this.objectSize = objectSize;
-        this.amountOfObjects = amountOfObjects;
         this.levelGoal = levelGoal;
         this.amountOfLivesLeft = amountOfLivesLeft;
         this.generateSpaceObjects();
@@ -69,7 +66,11 @@ class Level {
 
     private generateSpaceObjects() {
 
-        while(this.spaceObjects.length < 5) {
+        let amountOfAsteroids = 5 + Math.ceil((this.levelValue - 1) * 0.2);
+        let amountOfBombs = 1 + Math.ceil((this.levelValue - 1) * 0.2);
+        let amountOfObjects = amountOfAsteroids + amountOfBombs;
+
+        while(this.spaceObjects.length < amountOfAsteroids) {
             let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
             let size = random(25, 100);
             let healthLevel = 1;
@@ -107,9 +108,8 @@ class Level {
         }
 
         // Bomb generator
-        while(this.spaceObjects.length < 7) {
-            let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
-            
+        while(this.spaceObjects.length < amountOfObjects) {
+            let position = createVector(random(100, (width - 100)), random(100, (height - height /4)));    
             
             let bomb = new Bomb(position)
 
@@ -129,17 +129,8 @@ class Level {
             if(!overlapping) {
                 this.spaceObjects.push(bomb);
             }
-
         }
-
-    }
-        // for(let i = 0; i < 3; i++) {
-        //     const position = createVector(random(100, (width - 100)), random(100, (height - height /4)));
-        //     spaceObjects.push(new Bomb(position, 3));
-
-        // }
-        
-    
+    }   
 
     public goToNextLevel() {
         // this.generateSpaceObjects();
