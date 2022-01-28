@@ -8,10 +8,13 @@ class PauseMenu {
 
     public open() {
 
+        const pauseContainer = document.createElement('div') as HTMLDivElement;
+        pauseContainer.id = 'pauseContainer';
+        document.body.appendChild(pauseContainer);
 
         const pauseMenuContainer = document.createElement('DIV') as HTMLDivElement;
         pauseMenuContainer.id = 'pauseMenuContainer';
-        document.body.appendChild(pauseMenuContainer);
+        pauseContainer.appendChild(pauseMenuContainer);
         
         const resumeButton = document.createElement('button')
         resumeButton.id = 'resumeButton';

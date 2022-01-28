@@ -60,17 +60,17 @@ class StartMenu {
 
     public aboutGame() {
 
-                this.startMenuContainer.remove();
-        outGameContainer = document.createElement('div') as HTMLDivElement;
+        this.startMenuContainer.remove();
+        const aboutGameContainer = document.createElement('div') as HTMLDivElement;
         aboutGameContainer.id = 'aboutGameContainer';
         document.body.appendChild(aboutGameContainer);
 
         const aboutGameInnerContainer = document.createElement('div') as HTMLDivElement;
-aboutGamaboutGameContainer.appendChild(aboutGameInnerContainer);eInnerContainer.id = 'aboutGameInnerContainer';
-                        
-
-
-        aboutGame        aboutGame        d = 'aboutHeadingDiv';
+        aboutGameContainer.appendChild(aboutGameInnerContainer);
+        aboutGameInnerContainer.id = 'aboutGameInnerContainer';
+        
+        const aboutHeadingDiv = document.createElement('div') as HTMLDivElement;    
+        aboutHeadingDiv.id = 'aboutHeadingDiv';
         aboutHeadingDiv.innerHTML = 'ABOUT';
         aboutGameInnerContainer.appendChild(aboutHeadingDiv); 
 

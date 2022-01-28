@@ -1,5 +1,4 @@
 #aboutGameContainer {
-    line-height: .5;
     position: absolute;
     top: 0;
     left: 0;
@@ -12,15 +11,14 @@
     backdrop-filter: blur(4px);
 }
 
-#aboutGameInnerContainer{
+#aboutGameInnerContainer {
     background-color: #414141;
     border: solid 3px #FAFF00;
     border-radius: 20px;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: #FAFF00;
     height: 19rem;
     width: 26rem;
