@@ -40,10 +40,6 @@
     color: orange;
 }
 
-canvas {
-    filter: blur(4px);
-}
-
 #topMenuContainer {
     display: none;
 }
