@@ -2,7 +2,9 @@ class StartMenu {
     private game: IGame;
     private startMenuContainer!: HTMLDivElement;
     private aboutGameContainer!: HTMLDivElement;
-    //private pauseMenu: PauseMenu;
+    public pauseContainer!: HTMLDivElement;
+    //public topMenuContainer: HTMLDivElement;
+    //public pauseMenu: PauseMenu;
 
     constructor(game: IGame) {
         this.game = game; 
@@ -12,7 +14,8 @@ class StartMenu {
     }
     
     public openMenu() {
-        //  textFont(spaceFont, [2])   
+        //  textFont(spaceFont, [2]) 
+        //this.topMenuContainer.remove();
         this.startMenuContainer = document.createElement ('div') as HTMLDivElement;
         this.startMenuContainer.classList.add('startMenuContainer');
         document.body.appendChild(this.startMenuContainer);
@@ -25,33 +28,36 @@ class StartMenu {
         logoContainer.appendChild(logoTopText);
         logoContainer.appendChild(logoBottomText);
         this.startMenuContainer.appendChild(logoContainer);
-    
-
+        
+        
         const nameInput = document.createElement('input');
         nameInput.classList.add('nameInput');
         nameInput.placeholder = 'Enter your name...';
         this.startMenuContainer.appendChild(nameInput);
         
-
+        
         const startGameButton = document.createElement('button');
         startGameButton.className = ('startGameButton');
         startGameButton.innerHTML = 'START GAME';
         startGameButton.style.fontFamily = 'russo one';
         startGameButton.addEventListener('click', () => this.startGame())
         this.startMenuContainer.appendChild(startGameButton);
-
-
+        
+        
         const aboutButton = document.createElement('button')
         aboutButton.classList.add('aboutButton');
         aboutButton.innerHTML = 'ABOUT';
         aboutButton.style.fontFamily = 'russo one';
         aboutButton.addEventListener('click', () => this.aboutGame())
         this.startMenuContainer.appendChild(aboutButton); 
+        //this.pauseContainer.remove() 
+        //this.pauseContainer.remove();
     }
-
+    
     public startGame() {
         this.game.gameState = "running";
         this.startMenuContainer.remove();
+        //this.pauseContainer.remove();
         //this.pauseMenu.remove();
     }
 

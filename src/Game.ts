@@ -1,6 +1,6 @@
 
 class Game implements IGame {
-    private pauseMenu: PauseMenu;
+    public pauseMenu: PauseMenu;
     //private startMenu: StartMenu;
     private score: number;
     private gameOver: boolean;

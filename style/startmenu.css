@@ -42,9 +42,9 @@ h1 {
     background: none;
 }
 
-#topMenuContainer {
+/* #topMenuContainer {
     display: none;
-}
+} */
 
 .startGameButton:hover, .aboutButton:hover {
     color: orange;

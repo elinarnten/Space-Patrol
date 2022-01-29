@@ -1,14 +1,14 @@
 /// <reference path="StartMenu.ts" />
 
 class PauseMenu {
-    private pauseContainer!: HTMLDivElement;
+    public pauseContainer!: HTMLDivElement;
     private game: IGame; 
     private startMenu: StartMenu;
 
     
     constructor(game: IGame){
         this.game = game;
-        this.startMenu = new StartMenu(game);   
+        this.startMenu = new StartMenu(game);  
     }
 
     public open() {
@@ -30,7 +30,7 @@ class PauseMenu {
         const restartButton = document.createElement('button')
         restartButton.id = 'restartButton';
         restartButton.innerHTML = 'RESTART';
-        restartButton.addEventListener('click', () => this.startMenu.startGame());
+        restartButton.addEventListener('click', () => this.restartGame());
         pauseMenuContainer.appendChild(restartButton);
 
         const aboutButton = document.createElement('button')
@@ -52,8 +52,14 @@ class PauseMenu {
         this.pauseContainer.remove();
     }
     
+    private restartGame() {
+        this.game.gameState = "running";
+        this.pauseContainer.remove();
+        this.startMenu.startGame();
+    }
     public quitGame() {
         this.game.gameState = "start";
+        this.startMenu.openMenu();
         this.pauseContainer.remove();
     }
 } 
