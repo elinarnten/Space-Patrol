@@ -100,6 +100,7 @@ class StartMenu {
     }
 
     public update() {
+       
     }
 
     public draw() {
