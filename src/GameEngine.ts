@@ -36,6 +36,7 @@ class GameEngine {
                 // checks if a spaceobject has more helth than 0 when hit, change the health with -1
                 if (spaceObject.health > 0) {
                     spaceObject.health--;
+                    spaceObject.isHit = true;
 
                     // checks if a spaceobject has a health of 0
                     if (spaceObject.health == 0) {

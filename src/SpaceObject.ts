@@ -10,6 +10,7 @@ abstract class SpaceObject {
     private explodingTimeout: number;
     private imageIndex: number;
     public score: number;
+    public isHit: boolean;
 
     constructor(position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, score: number, angle: number) {
 
@@ -24,6 +25,7 @@ abstract class SpaceObject {
         this.isExploding = false;
         this.imageIndex = 0;
         this.angle = angle;
+        this.isHit = false;
     }
 
     public setDestroyed() {
@@ -36,6 +38,23 @@ abstract class SpaceObject {
             sound[4].play();
             sound[4].setVolume(.01);
         }
+    }
+
+    public displayAsteroidLife() {
+        push();
+        rectMode(CENTER);
+        textSize(30);
+        fill('red');
+        translate(this.position.x, this.position.y)
+        if(this.health == 2) {
+            fill('yellow')
+            rect(0, this.size, this.size, 15);
+        }else {
+            fill('red');
+            rect(0, this.size, this.size / 2, 15);
+
+        }
+        pop();
     }
 
     public explosionAnimation(){
@@ -65,5 +84,10 @@ abstract class SpaceObject {
         imageMode(CENTER);
         image(this.image, 0, 0, this.size * 2, this.size * 2);
         pop();
+
+        if(this.isHit == true && this.health >= 1) {
+            this.displayAsteroidLife();
+        }
+
     }
 }  
