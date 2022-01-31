@@ -46,7 +46,7 @@ class GameEngine {
 
                 if (spaceObject instanceof Bomb) {
                     this.level.amountOfLivesLeft = this.level.amountOfLivesLeft - 1;
-                    sound[5].setVolume(.5);
+                    sound[5].setVolume(.05);
                     sound[5].play();
 
                 }

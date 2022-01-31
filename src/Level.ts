@@ -20,12 +20,8 @@ class Level {
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
         this.setNewGoal();
-        
-        
-        
     }
 
-   
    
 
     public getCurrentLevel() {
@@ -57,15 +53,6 @@ class Level {
             //you didn't pass score in time, earth is no more.
         }
 
-        if (this.score >= this.levelGoal) {
-            textSize(100);
-            text('YOU MADE THE SCORE!', 100, 500);
-            fill(250, 255, 0);
-            // NEXT LEVEL SHOW
-            this.generateNextLevel();
-        }
-
-
          if(this.score >= this.levelGoal){
              textSize(100);
                  text('YOU MADE THE SCORE!', 100, 500);
@@ -73,7 +60,9 @@ class Level {
              // NEXT LEVEL SHOW
              this.generateNextLevel();
              sound[6].play();
+             sound[6].setVolume(.3);
              sound[7].play(3.5);
+             sound[7].setVolume(.5);
          }
   
      
