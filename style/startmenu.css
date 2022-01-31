@@ -6,17 +6,7 @@ h1 {
     margin-bottom: 3rem;
 
 }
-.nameInput {
-    border-radius: 1rem;
-    border: 3px solid #FAFF00;
-    background-color: #414141;
-    color: #FAFF00;
-    font-family: 'Russo One', sans-serif;
-    font-size: 1rem;
-    height: 2rem;
-    padding-left: 1rem;
-    padding-right:  1rem;
-}
+
 .startMenuContainer {
     line-height: .5;
     position: absolute;

@@ -30,12 +30,6 @@ class StartMenu {
         this.startMenuContainer.appendChild(logoContainer);
         
         
-        const nameInput = document.createElement('input');
-        nameInput.classList.add('nameInput');
-        nameInput.placeholder = 'Enter your name...';
-        this.startMenuContainer.appendChild(nameInput);
-        
-        
         const startGameButton = document.createElement('button');
         startGameButton.className = ('startGameButton');
         startGameButton.innerHTML = 'START GAME';
