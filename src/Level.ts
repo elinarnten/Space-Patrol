@@ -20,7 +20,13 @@ class Level {
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
         this.setNewGoal();
+        
+        
+        
     }
+
+   
+   
 
     public getCurrentLevel() {
         return this.levelValue;
@@ -59,6 +65,8 @@ class Level {
                  fill(250, 255, 0);
              // NEXT LEVEL SHOW
              this.generateNextLevel();
+             sound[6].play();
+             sound[7].play(3.5);
          }
         
         if(this.amountOfLivesLeft == 0) {

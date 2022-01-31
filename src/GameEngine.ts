@@ -9,7 +9,11 @@ class GameEngine {
         this.cockpit = new Cockpit(this);
         this.topMenu = new TopMenu(this.level);
         this.deltaTime = 5000;
+       
+
     }
+
+    
     
 
 
@@ -54,6 +58,9 @@ class GameEngine {
 
                 if(spaceObject instanceof Bomb) {
                     this.level.amountOfLivesLeft = this.level.amountOfLivesLeft - 1;
+                    sound[5].setVolume(.5);
+                    sound[5].play();
+
                 }
                     console.log('removing object')
                     let index = this.level.spaceObjects.indexOf(spaceObject);

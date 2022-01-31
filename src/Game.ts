@@ -16,19 +16,24 @@ class Game implements IGame {
         this.gameEngine = new GameEngine();
         this.score = 0;
         this.gameOver = false;
+        this.playSound();
     }
 
     // private restartGame() {
     //    this.gameEngine = new GameEngine();
     // }
 
-    public playSound() {
-        
-    }
+     public playSound() {
+         
+             sound[0].setVolume(.05);
+             sound[0].loop(); 
+         
+     }
     
     public update() {
         if (this.gameState === 'running') {
             this.gameEngine.update();
+            
             
             if (keyIsDown(80)) {
                 this.gameState = 'paused';

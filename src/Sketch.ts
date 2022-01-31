@@ -7,9 +7,7 @@ let startMenu: StartMenu;
 let isActivated: LaserBeam;
 const timeBaseValue = 600;
 let spaceFont;
-
-
-// let sound: p5.SoundFile
+let sound: Array<p5.SoundFile> = [];
 
 /**
  * Built in preload function in P5
@@ -33,22 +31,32 @@ function preload() {
             loadImage('./assets/images/explosion/7.png'),
             loadImage('./assets/images/explosion/8.png'),
             loadImage('./assets/images/explosion/9.png')
-        ]
-        // explosion1: loadImage('./assets/images/explosion/1'),
-        // explosion2: loadImage('./assets/images/explosion/2'),
-        // explosion3: loadImage('./assets/images/explosion/3'),
-        // explosion4: loadImage('./assets/images/explosion/4'),
-        // explosion5: loadImage('./assets/images/explosion/5'),
-        // explosion6: loadImage('./assets/images/explosion/6'),
-        // explosion7: loadImage('./assets/images/explosion/7'),
-        // explosion8: loadImage('./assets/images/explosion/8'),
-        // explosion9: loadImage('./assets/images/explosion/9')
+        ],
+
 
 
     }
 
 
-    // sound: p5.SoundFile = loadSound('../assets/mySound.wav');
+    sound = [
+        loadSound('../assets/sound/background.mp3'),
+        loadSound('../assets/sound/chargeup.mp3'),
+        loadSound('../assets/sound/064-laser-thum.mp3'),
+        loadSound('../assets/sound/explosion-small.mp3'),
+        loadSound('../assets/sound/explosion-big.mp3'),
+        loadSound('../assets/sound/incorrect.swf.mp3'),
+        loadSound('../assets/sound/success.mp3'),
+        loadSound('../assets/sound/great-success-borat.mp3'),
+
+
+
+
+
+
+
+
+
+    ] 
 
 
 }

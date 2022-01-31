@@ -29,6 +29,8 @@ class Cockpit { //change time name
 
         if (keyIsDown(32) && !this.isActivated) {
             this.isActivated = true;
+            sound[1].play();
+            sound[2].play(.1);
             this.laserBeam = new LaserBeam(false, this.angle, createVector(width / 2, height - 40), this.gameEngine);
         }
 
