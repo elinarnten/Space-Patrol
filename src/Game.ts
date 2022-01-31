@@ -1,17 +1,18 @@
 
-
-class Game {
-    private pauseMenu: PauseMenu;
-    private startMenu: StartMenu;
+class Game implements IGame {
+    public pauseMenu: PauseMenu;
+    //public startMenu: StartMenu;
+    //private startMenu: StartMenu;
     private score: number;
-    private gameState: GameState;
     private gameOver: boolean;
     private gameEngine: GameEngine;
+    public gameState: GameState;
 
     constructor() {
-        this.gameState = {gameState: "start"};
-        this.pauseMenu = new PauseMenu(this.gameState);
-        this.startMenu = new StartMenu(this.gameState);
+        this.gameState = "start";
+        this.pauseMenu = new PauseMenu(this);
+        //this.startMenu = new StartMenu(this);
+        //this.startMenu = new StartMenu(this);
         this.gameEngine = new GameEngine();
         this.score = 0;
         this.gameOver = false;
@@ -26,12 +27,21 @@ class Game {
     }
     
     public update() {
-        this.gameEngine.update();
+        if (this.gameState === 'running') {
+            this.gameEngine.update();
+            
+            if (keyIsDown(80)) {
+                this.gameState = 'paused';
+                this.pauseMenu.open();
+            }
+        }
     }
     
     
     public draw() {
-        this.gameEngine.draw();
+        if (this.gameState === 'running') {
+            this.gameEngine.draw();
+        }
     }
 
 }
