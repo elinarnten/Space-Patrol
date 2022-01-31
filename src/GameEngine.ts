@@ -46,6 +46,9 @@ class GameEngine {
 
                 if (spaceObject instanceof Bomb) {
                     this.level.amountOfLivesLeft = this.level.amountOfLivesLeft - 1;
+                    sound[5].setVolume(.5);
+                    sound[5].play();
+
                 }
                 let index = this.level.spaceObjects.indexOf(spaceObject);
                 this.level.spaceObjects.splice(index, 1);

@@ -28,6 +28,12 @@ abstract class SpaceObject {
 
     public setDestroyed() {
         this.isExploding = true;
+        if(this.size <= 70){
+
+            sound[3].play();
+        } else {
+            sound[4].play();
+        }
     }
 
     public explosionAnimation(){
