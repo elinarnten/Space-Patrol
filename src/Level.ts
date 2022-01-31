@@ -66,7 +66,7 @@ class Level {
             // sound[8].play()
             // sound[9].play(2, undefined, .5, 1);
             //you didn't pass score in time, earth is no more.
-        }
+        
 
          if(this.score >= this.levelGoal){
              textSize(100);
@@ -96,7 +96,7 @@ class Level {
             // if score not met, add GAME OVER state
         }
     }
-
+    
     // gets the current level goal (number) 
     // returns levelgoal
     public getLevelGoal() {
