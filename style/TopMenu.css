@@ -13,3 +13,7 @@
 #timerContainer.danger span{
 color: red;
 }
+
+li{
+    list-style: none;
+}
