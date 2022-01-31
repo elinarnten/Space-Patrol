@@ -11,6 +11,7 @@ class Level implements ILevel {
     public amountOfLivesLeft: number;
     private prepareForNextLevel: boolean;
     private levelMenu: LevelMenu;
+    private amountOfBombs: number;
 
     constructor(
         levelValue: number,
@@ -21,6 +22,7 @@ class Level implements ILevel {
         this.levelGoal = 0;
         this.amountOfLivesLeft = amountOfLivesLeft;
         this.score = 0;
+        this.amountOfBombs = 1;
         this.generateSpaceObjects();
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
@@ -85,8 +87,9 @@ class Level implements ILevel {
                  text('YOU MADE THE SCORE!', 100, 500);
                  fill(250, 255, 0);
              // NEXT LEVEL SHOW
-             this.prepareForNextLevel = true;
-             this.levelMenu.open();
+            //  this.prepareForNextLevel = true;
+            //  this.levelMenu.open();
+            this.generateNextLevel();
              sound[6].play();
              sound[6].setVolume(.3);
              sound[7].play(3.5, undefined, undefined, undefined,1.7);
@@ -147,10 +150,14 @@ class Level implements ILevel {
         let amountOfAsteroids = 5 + this.levelValue;
 
         // start value of bombs is 1, and will add more depending on which level
-        let amountOfBombs = 1 + Math.ceil((this.levelValue - 1) * 0.2);
+
+        const isDividableBy5 = !(this.levelValue % 5)
+        if (isDividableBy5) {
+            this.amountOfBombs = this.amountOfBombs + 1;
+        }
 
         // defining the total amout of objects (asteroids + bombs)
-        let amountOfObjects = amountOfAsteroids + amountOfBombs;
+        let amountOfObjects = amountOfAsteroids + this.amountOfBombs;
 
         // clear the array before adding new objects
         this.spaceObjects.splice(0, amountOfObjects);
@@ -234,7 +241,7 @@ class Level implements ILevel {
     }
 
     public update() {
-        if (this.prepareForNextLevel) return;
+        // if (this.prepareForNextLevel) return;
 
         for (let object of this.spaceObjects) {
             object.update();
