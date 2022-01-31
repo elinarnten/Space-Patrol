@@ -11,9 +11,6 @@ class GameEngine {
         this.deltaTime = 5000;
     }
 
-
-
-
     public checkCollision() {
         const laserBeam = this.cockpit.getLaserBeam();
         if (!laserBeam || laserBeam.hitsAsteroid) return;
@@ -38,16 +35,10 @@ class GameEngine {
                         }
                         spaceObject.setDestroyed();
                     }
-
                 }
-
             }
         }
     }
-
-   
-
-
 
     public removeDestroyedObjects() {
         for (const spaceObject of this.level.spaceObjects) {
@@ -61,8 +52,6 @@ class GameEngine {
             }
         }
     }
-
-
 
     public update() {
         this.level.update();
@@ -82,5 +71,4 @@ class GameEngine {
         image(images.cockpit, 0, 0, width, height);
         this.cockpit.draw();
     }
-
 }

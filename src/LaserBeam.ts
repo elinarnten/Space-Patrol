@@ -41,7 +41,6 @@ class LaserBeam {
         )
     }
 
-
     public draw() { 
         push();
         stroke('red');

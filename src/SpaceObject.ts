@@ -6,13 +6,10 @@ abstract class SpaceObject {
     protected friendly: boolean;
     protected angle: number;
     public isDestroyed: boolean;
-    private changeImageTimer: number
     private isExploding: boolean;
     private explodingTimeout: number;
     private imageIndex: number;
-    public explosionTimeOut: number;
     public score: number;
-
 
     constructor(position: p5.Vector, size: number, health: number, image: p5.Image, friendly: boolean, score: number, angle: number) {
 
@@ -21,9 +18,7 @@ abstract class SpaceObject {
         this.health = health;
         this.image = image;
         this.friendly = friendly;
-        this.explosionTimeOut = 5;
         this.isDestroyed = false;
-        this.changeImageTimer = 9;
         this.score = score;
         this.explodingTimeout = 200;
         this.isExploding = false;
@@ -50,16 +45,9 @@ abstract class SpaceObject {
         }
     }
 
-    public shouldBeRemoved() {
-
-
-    }
-
-
     public update() {
         this.angle = this.angle + 1;
-        this.explosionAnimation()
-        
+        this.explosionAnimation()   
     }
 
     public draw() {
