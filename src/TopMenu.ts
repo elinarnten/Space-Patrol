@@ -1,13 +1,10 @@
 class TopMenu {
-
     private level: Level;
-
 
     constructor(level: Level) {
         this.level = level;
         this.addTopMenuContainer();
     }
-
 
     public addTopMenuContainer() {
         const topMenuContainer = document.createElement('DIV') as HTMLDivElement;
@@ -57,10 +54,8 @@ class TopMenu {
         if (timeLeft <= 10){
             timerContainer.classList.add('danger');
         }
-
     }
 
     public draw() {
     } 
-
 }

@@ -16,7 +16,7 @@ class Level {
         this.levelGoal = 0;
         this.amountOfLivesLeft = amountOfLivesLeft;
         this.score = 0;
-        this.generateSpaceObjects();    
+        this.generateSpaceObjects();
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
         this.setNewGoal();
@@ -46,18 +46,25 @@ class Level {
 
         if (frameCount % 60 === 0 && this.timeBaseValue > 0) {
             this.timeBaseValue--;
-
         }
 
         // when the level-timer (timeBaseValue) reach 0, this happens
-        if (this.timeBaseValue === 0){
-            
+        if (this.timeBaseValue === 0) {
+
             textSize(100);
             text('TIME IS OUT YOU DID NOT MAKE IT!', 100, 500);
             fill(250, 255, 0);
-                //you didn't pass score in time, earth is no more.
-            
+            //you didn't pass score in time, earth is no more.
         }
+
+        if (this.score >= this.levelGoal) {
+            textSize(100);
+            text('YOU MADE THE SCORE!', 100, 500);
+            fill(250, 255, 0);
+            // NEXT LEVEL SHOW
+            this.generateNextLevel();
+        }
+
 
          if(this.score >= this.levelGoal){
              textSize(100);
@@ -68,21 +75,18 @@ class Level {
              sound[6].play();
              sound[7].play(3.5);
          }
-        
-        if(this.amountOfLivesLeft == 0) {
+  
+     
+        if (this.amountOfLivesLeft == 0) {
             textSize(300);
             text('GAME OVER!', 100, 500);
             fill(250, 255, 0);
-
-            
-
             // run "next level menu thing"
             // Score:  xxx/xxx
             // Lives left: xx/xx
             // If score met, generate new level
             // if score not met, add GAME OVER state
         }
-
     }
 
     public getLevelGoal() {
@@ -102,9 +106,8 @@ class Level {
     }
 
     public setNewGoal() {
-        this.levelGoal =  (this.generateSpaceObjects() * 5);
+        this.levelGoal = (this.generateSpaceObjects() * 5);
         return this.levelGoal;
-
     }
 
     private generateSpaceObjects() {
@@ -112,7 +115,7 @@ class Level {
         let amountOfAsteroids = 5 + this.levelValue;
         let amountOfBombs = 1 + Math.ceil((this.levelValue - 1) * 0.2);
         let amountOfObjects = amountOfAsteroids + amountOfBombs;
-        
+
         this.spaceObjects.splice(0, amountOfObjects);
 
         while (this.spaceObjects.length < amountOfAsteroids) {
@@ -130,8 +133,6 @@ class Level {
 
             score = score * healthLevel;
 
-
-
             let asteroid = new Asteroid(position, size, healthLevel, score, angle)
 
             let overlapping = false;
@@ -143,14 +144,12 @@ class Level {
                 if (d < asteroid.size + other.size) {
                     //then they are overlapping
                     overlapping = true;
-
                 }
             }
 
             if (!overlapping) {
                 this.spaceObjects.push(asteroid);
             }
-            
         }
 
         // Bomb generator
@@ -169,7 +168,6 @@ class Level {
                 if (d < bomb.size + other.size) {
                     //then they are overlapping
                     overlapping = true;
-
                 }
             }
 
@@ -180,37 +178,27 @@ class Level {
         return amountOfAsteroids;
     }
 
-    // public clearCurrentLevel() {
-    // }
-    
     public generateNextLevel() {
-        
+
         this.timeBaseValue = 50;
         this.levelValue = this.levelValue + 1;
         this.score = 0;
         this.levelGoal = this.setNewGoal();
-        
-        
 
-         this.generateSpaceObjects();    
-         this.calculateCountdownTimer();
-         this.calculateAmountOfLivesLeft()
-        
+        this.generateSpaceObjects();
+        this.calculateCountdownTimer();
+        this.calculateAmountOfLivesLeft()
     }
-
 
     public update() {
         for (let object of this.spaceObjects) {
             object.update();
         }
-
     }
 
     public draw() {
         for (let object of this.spaceObjects) {
             object.draw();
         }
-
-
     }
 }

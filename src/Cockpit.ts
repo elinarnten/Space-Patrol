@@ -1,9 +1,6 @@
-
-
-class Cockpit { //change time name
+class Cockpit {
     private time: number;
     private isActivated: boolean;
-    private hitsAsteroid: boolean;
     private angle: number;
     private position: p5.Vector;
     private angleChangeDirection: boolean;
@@ -12,7 +9,6 @@ class Cockpit { //change time name
 
     constructor(gameEngine: GameEngine) {
         this.isActivated = false;
-        this.hitsAsteroid = false;
         this.angle = 0;
         this.position = createVector(width / 2, height - 40);
         this.angleChangeDirection = true;
@@ -22,6 +18,26 @@ class Cockpit { //change time name
 
     public getLaserBeam() {
         return this.laserBeam;
+    }
+
+    private updateBeamAngle() {
+        if (!this.isActivated) {
+            if (this.angle < 0 && this.angleChangeDirection == true) {
+                this.angleChangeDirection = true;
+
+            } else if (this.angle <= 180) {
+                this.angleChangeDirection = false
+            }
+
+            if (this.angle < 0 && this.angleChangeDirection == true && !this.isActivated) {
+                this.angle = this.angle + 1;
+            } else if (this.angleChangeDirection == false && !this.isActivated) {
+                this.angle = this.angle - 1;
+                if (this.angle <= -180) {
+                    this.angleChangeDirection = true;
+                }
+            }
+        }
     }
 
     public update() {
@@ -46,40 +62,17 @@ class Cockpit { //change time name
         this.laserBeam?.update();
     }
 
-    private updateBeamAngle() {
-        if (!this.isActivated) {
-            if (this.angle < 0 && this.angleChangeDirection == true) {
-                this.angleChangeDirection = true;
-
-            } else if (this.angle <= 180) {
-                this.angleChangeDirection = false
-            }
-
-            if (this.angle < 0 && this.angleChangeDirection == true && !this.isActivated) {
-                this.angle = this.angle + 1;
-            } else if (this.angleChangeDirection == false && !this.isActivated) {
-                this.angle = this.angle - 1;
-                if (this.angle <= -180) {
-                    this.angleChangeDirection = true;
-                }
-
-            }
-        }
-    }
-
 
     public draw() {
         push();
         strokeWeight(10);
-        
-        const endX = this.position.x+80* cos(this.angle);
-        const endY = this.position.y+80 * sin(this.angle);
 
-        line(width/2, height-40, endX, endY)
+        const endX = this.position.x + 80 * cos(this.angle);
+        const endY = this.position.y + 80 * sin(this.angle);
+
+        line(width / 2, height - 40, endX, endY)
         pop()
 
-        
         this.laserBeam?.draw();
     }
-
 }
