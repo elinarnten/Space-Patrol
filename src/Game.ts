@@ -40,6 +40,11 @@ class Game implements IGame {
                 this.gameState = 'paused';
                 this.pauseMenu.open();
             }
+
+            if (keyIsDown(27)) {
+                this.gameState = 'paused';
+                this.pauseMenu.open();
+            }
         }
     }
     

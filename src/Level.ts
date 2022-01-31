@@ -81,16 +81,16 @@ class Level implements ILevel {
         
 
          if(this.score >= this.levelGoal){
-             textSize(100);
+             /* textSize(100);
                  text('YOU MADE THE SCORE!', 100, 500);
-                 fill(250, 255, 0);
+                 fill(250, 255, 0); */
              // NEXT LEVEL SHOW
              this.prepareForNextLevel = true;
              this.levelMenu.open();
-             sound[6].play();
-             sound[6].setVolume(.3);
-             sound[7].play(3.5, undefined, undefined, undefined,1.7);
-             sound[7].setVolume(.5);
+            // sound[6].play();
+            // sound[6].setVolume(.3);
+            // sound[7].play(3.5, undefined, undefined, undefined,1.7);
+            // sound[7].setVolume(.5);
          }
 
         // Player runs out of lives (has hit bombs too many times), did not pass the level, game over
@@ -248,9 +248,3 @@ class Level implements ILevel {
     }
 }
 
-class LevelMenu {
-    constructor(level: ILevel) {
-
-    } 
-    public open() {}
-}
