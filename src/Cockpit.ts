@@ -16,7 +16,7 @@ class Cockpit { //change time name
         this.angle = 0;
         this.position = createVector(width / 2, height - 40);
         this.angleChangeDirection = true;
-        this.time = 5000;
+        this.time = 3000;
         this.gameEngine = gameEngine;
     }
 
@@ -35,7 +35,7 @@ class Cockpit { //change time name
         if (this.isActivated) {
             this.time -= deltaTime;
             if (this.time < 0) {
-                this.time = 5000;
+                this.time = 3000;
                 this.isActivated = false;
                 delete this.laserBeam;
             }

@@ -1,13 +1,10 @@
 class TopMenu {
 
     private level: Level;
-    private pointSystem: PointSystem;
-    // private game: Game;
 
 
-    constructor(level: Level, pointSystem: PointSystem) {
+    constructor(level: Level) {
         this.level = level;
-        this.pointSystem = pointSystem;
         this.addTopMenuContainer();
     }
 
@@ -18,19 +15,19 @@ class TopMenu {
         document.body.appendChild(topMenuContainer);
 
         // all children of the menuContainer, loop later, make LI
-        const levelContainer = document.createElement('DIV') as HTMLDivElement;
+        const levelContainer = document.createElement('SPAN') as HTMLSpanElement;
         levelContainer.id = 'levelContainer';
         topMenuContainer.appendChild(levelContainer)
 
-        const scoreContainer = document.createElement('DIV') as HTMLDivElement;
+        const scoreContainer = document.createElement('SPAN') as HTMLSpanElement;
         scoreContainer.id = 'scoreContainer';
         topMenuContainer.appendChild(scoreContainer)
 
-        const livesContainer = document.createElement('DIV') as HTMLDivElement;
+        const livesContainer = document.createElement('DIV') as HTMLSpanElement;
         livesContainer.id = 'livesContainer';
         topMenuContainer.appendChild(livesContainer)
 
-        const timerContainer = document.createElement('DIV') as HTMLDivElement;
+        const timerContainer = document.createElement('DIV') as HTMLSpanElement;
         timerContainer.id = 'timerContainer';
         topMenuContainer.appendChild(timerContainer)
 
@@ -51,11 +48,16 @@ class TopMenu {
             return
         }
 
+        const timeLeft = this.level.getTimeBaseValue()
+
         levelContainer.innerText = `Level: ${this.level.getCurrentLevel()}`;
-        scoreContainer.innerText = `Score:${this.pointSystem.getScore()}/${this.level.getLevelGoal()}`;
-        livesContainer.innerText = `Lives: ${this.level.getAmountOfLivesLeft()} / ${this.pointSystem.getBaseAmountOfLives()}`;
-        // fix so if span is in "danger" (10sec left) add class danger - red text
-        timerContainer.innerHTML = `Time to destruction: <span>${this.level.getTimeBaseValue()}</span>`
+        scoreContainer.innerText = `Score:${this.level.score}/${this.level.getLevelGoal()}`;
+        livesContainer.innerText = `Lives: ${this.level.getAmountOfLivesLeft()} / 3`;
+        timerContainer.innerHTML = `Time to destruction: <span>${timeLeft.toFixed(0)}</span>`
+        if (timeLeft <= 10){
+            timerContainer.classList.add('danger');
+        }
+
     }
 
     public draw() {

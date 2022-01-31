@@ -3,17 +3,12 @@ class Asteroid extends SpaceObject {
 
     
 
-    constructor(position: p5.Vector, size: number, health: number, explosionTimeOut: number) {
-        super(position, size, health, images.asteroid, true, explosionTimeOut);
+    constructor(position: p5.Vector, size: number, health: number, score: number, angle: number) {
+        super(position, size, health, images.asteroid, true, score, angle);
         
     }
     
-    public setDestroyed() {
-        super.setDestroyed();
-        // this.image = 
-        // byt till andra bilder
-        // starta animering
-    }
+   
 
     public rotateAsteroid() {
         

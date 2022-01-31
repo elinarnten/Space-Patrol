@@ -1,10 +1,11 @@
 class Bomb extends SpaceObject {
 
-    private isHit: boolean;
+    
 
-    constructor(position: p5.Vector, explosionTimeOut: number) {
-        super(position, 100, 1, images.bomb, false, explosionTimeOut);
-        this.isHit = false;
+    constructor(position: p5.Vector, angle: number) {
+        super(position, 50, 1, images.bomb, false, 0, angle);
+        
+        
     }
 
     public explodeBomb() {

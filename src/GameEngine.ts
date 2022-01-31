@@ -2,20 +2,22 @@ class GameEngine {
     private level: Level;
     private cockpit: Cockpit;
     private topMenu: TopMenu;
-    private pointSystem: PointSystem;
     public deltaTime: number;
 
     constructor() {
-        this.level = new Level(120, 1, 1, 1, 20, 3);
-        this.pointSystem = new PointSystem(3, 0)
+        this.level = new Level(1,3);
         this.cockpit = new Cockpit(this);
-        this.topMenu = new TopMenu(this.level, this.pointSystem);
+        this.topMenu = new TopMenu(this.level);
         this.deltaTime = 5000;
     }
     
+
+
+
     public checkCollision () {
         const laserBeam = this.cockpit.getLaserBeam();
-        if (!laserBeam) return;
+        if (!laserBeam || laserBeam.hitsAsteroid) return;
+
 
         const endPosition = laserBeam.getEndPosition();
         
@@ -24,32 +26,56 @@ class GameEngine {
             const isHit = dist(endPosition.x, endPosition.y, spaceObject.position.x, spaceObject.position.y)
 
             if (isHit < spaceObject.size) {
-                // destroy asteroid ()
-                spaceObject.setDestroyed();
+                
+                laserBeam.hitsAsteroid = true;                 
 
-                // update laserbeam
-                laserBeam.hitsAsteroid = true;
-                console.log(spaceObject.health);
+                if(spaceObject.health > 0) {
+                    console.log(spaceObject.health);
+                    spaceObject.health--;
+                    
+                    if (spaceObject.health == 0) {
+                        if(spaceObject instanceof Asteroid) {
+                            this.level.score = this.level.score + spaceObject.score;
+                        }
+                        spaceObject.setDestroyed();
+                    }
+
+                } 
+                
             }
         }
     }
 
-    private removeDestroyedObjects() {
+
+
+    public removeDestroyedObjects() {
         for (const spaceObject of this.level.spaceObjects) {
             if (spaceObject.isDestroyed) {
-                let index = this.level.spaceObjects.indexOf(spaceObject);
-                this.level.spaceObjects.splice(index, 1);
+
+                if(spaceObject instanceof Bomb) {
+                    this.level.amountOfLivesLeft = this.level.amountOfLivesLeft - 1;
+                }
+                    console.log('removing object')
+                    let index = this.level.spaceObjects.indexOf(spaceObject);
+                    this.level.spaceObjects.splice(index, 1);
             }
         }
     }
 
+
+
     public update() {
-        this.topMenu.update();
         this.level.update();
         this.cockpit.update();
-        this.level.LevelCountDownTimer(); 
+        this.level.levelCountDownTimer();
+        this.topMenu.update();
         this.checkCollision();
-        this.removeDestroyedObjects();
+         for (const spaceObject of this.level.spaceObjects) {
+             if (spaceObject.isDestroyed) {
+                 this.removeDestroyedObjects()
+             }
+         }
+
     }
 
     public draw() {
