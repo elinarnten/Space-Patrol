@@ -3,8 +3,6 @@ class Game implements IGame {
     public pauseMenu: PauseMenu;
     //public startMenu: StartMenu;
     //private startMenu: StartMenu;
-    private score: number;
-    private gameOver: boolean;
     private gameEngine: GameEngine;
     public gameState: GameState;
 
@@ -14,8 +12,6 @@ class Game implements IGame {
         //this.startMenu = new StartMenu(this);
         //this.startMenu = new StartMenu(this);
         this.gameEngine = new GameEngine();
-        this.score = 0;
-        this.gameOver = false;
     }
 
     // private restartGame() {

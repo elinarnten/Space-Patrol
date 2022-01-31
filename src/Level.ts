@@ -40,7 +40,6 @@ class Level {
 
         if (frameCount % 60 === 0 && this.timeBaseValue > 0) {
             this.timeBaseValue--;
-
         }
 
         // when the level-timer (timeBaseValue) reach 0, this happens
@@ -50,7 +49,6 @@ class Level {
             text('TIME IS OUT YOU DID NOT MAKE IT!', 100, 500);
             fill(250, 255, 0);
             //you didn't pass score in time, earth is no more.
-
         }
 
         if (this.score >= this.levelGoal) {
@@ -65,16 +63,12 @@ class Level {
             textSize(300);
             text('GAME OVER!', 100, 500);
             fill(250, 255, 0);
-
-
-
             // run "next level menu thing"
             // Score:  xxx/xxx
             // Lives left: xx/xx
             // If score met, generate new level
             // if score not met, add GAME OVER state
         }
-
     }
 
     public getLevelGoal() {
@@ -96,7 +90,6 @@ class Level {
     public setNewGoal() {
         this.levelGoal = (this.generateSpaceObjects() * 5);
         return this.levelGoal;
-
     }
 
     private generateSpaceObjects() {
@@ -122,8 +115,6 @@ class Level {
 
             score = score * healthLevel;
 
-
-
             let asteroid = new Asteroid(position, size, healthLevel, score, angle)
 
             let overlapping = false;
@@ -135,14 +126,12 @@ class Level {
                 if (d < asteroid.size + other.size) {
                     //then they are overlapping
                     overlapping = true;
-
                 }
             }
 
             if (!overlapping) {
                 this.spaceObjects.push(asteroid);
             }
-
         }
 
         // Bomb generator
@@ -161,7 +150,6 @@ class Level {
                 if (d < bomb.size + other.size) {
                     //then they are overlapping
                     overlapping = true;
-
                 }
             }
 
@@ -182,22 +170,17 @@ class Level {
         this.generateSpaceObjects();
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
-    
     }
-
 
     public update() {
         for (let object of this.spaceObjects) {
             object.update();
         }
-
     }
 
     public draw() {
         for (let object of this.spaceObjects) {
             object.draw();
         }
-
-
     }
 }
