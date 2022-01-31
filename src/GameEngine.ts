@@ -28,6 +28,7 @@ class GameEngine {
 
                 if (spaceObject.health > 0) {
                     spaceObject.health--;
+                    spaceObject.isHit = true;
 
                     if (spaceObject.health == 0) {
                         if (spaceObject instanceof Asteroid) {

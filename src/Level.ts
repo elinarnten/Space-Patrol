@@ -50,6 +50,10 @@ class Level {
             textSize(100);
             text('TIME IS OUT YOU DID NOT MAKE IT!', 100, 500);
             fill(250, 255, 0);
+            //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
+            // sound[8].setVolume(.5);
+            // sound[8].play()
+            // sound[9].play(2, undefined, .5, 1);
             //you didn't pass score in time, earth is no more.
         }
 
@@ -61,7 +65,7 @@ class Level {
              this.generateNextLevel();
              sound[6].play();
              sound[6].setVolume(.3);
-             sound[7].play(3.5);
+             sound[7].play(3.5, undefined, undefined, undefined,1.7);
              sound[7].setVolume(.5);
          }
   
@@ -70,6 +74,10 @@ class Level {
             textSize(300);
             text('GAME OVER!', 100, 500);
             fill(250, 255, 0);
+             //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
+            // sound[8].setVolume(.5);
+            // sound[8].play()
+            // sound[9].play(2, undefined, .5, 1);
             // run "next level menu thing"
             // Score:  xxx/xxx
             // Lives left: xx/xx
@@ -89,8 +97,12 @@ class Level {
     // CHECK IF WORKS WHEN GAME WORKS!!!!
     public calculateAmountOfLivesLeft() {
         if (this.amountOfLivesLeft < 3) {
-            this.amountOfLivesLeft = this.amountOfLivesLeft * (1 + (this.levelValue * 0.2));
+            this.amountOfLivesLeft = this.amountOfLivesLeft * Math.floor(1 + (this.levelValue * 0.2));
+            if(this.amountOfLivesLeft > 3) {
+                this.amountOfLivesLeft = 3;
+            }
             return this.amountOfLivesLeft.toFixed(0);
+            
         }
     }
 
@@ -108,7 +120,7 @@ class Level {
         this.spaceObjects.splice(0, amountOfObjects);
 
         while (this.spaceObjects.length < amountOfAsteroids) {
-            let position = createVector(random(100, (width - 100)), random(100, (height - height / 4)));
+            let position = createVector(random(100, (width - 100)), random(100, (height - 300)));
             let size = random(25, 100);
             let healthLevel = 1;
             let score = 5;
