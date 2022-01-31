@@ -1,11 +1,16 @@
-class Level {
+interface ILevel {
+    startNextRound(): void;
+}
+
+class Level implements ILevel {
     public spaceObjects: Array<Asteroid | Bomb> = [];
     public timeBaseValue: number;
     public levelValue: number;
     public score: number;
     public levelGoal: number;
     public amountOfLivesLeft: number;
-
+    private prepareForNextLevel: boolean;
+    private levelMenu: LevelMenu;
 
     constructor(
         levelValue: number,
@@ -20,6 +25,8 @@ class Level {
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
         this.setNewGoal();
+        this.prepareForNextLevel = false;
+        this.levelMenu = new LevelMenu(this);
     }
 
 
@@ -38,6 +45,11 @@ class Level {
         //defining the value of timebasevalue depending on which level    
         this.timeBaseValue = this.timeBaseValue * (1 + (this.levelValue * 0.2));
         return this.timeBaseValue;
+    }
+
+    public startNextRound() {
+        this.prepareForNextLevel = false;
+        this.generateNextLevel();
     }
 
     // the countdown-timer, use value from timebasevalue, calculateCountdownTimer()
@@ -73,7 +85,8 @@ class Level {
                  text('YOU MADE THE SCORE!', 100, 500);
                  fill(250, 255, 0);
              // NEXT LEVEL SHOW
-             this.generateNextLevel();
+             this.prepareForNextLevel = true;
+             this.levelMenu.open();
              sound[6].play();
              sound[6].setVolume(.3);
              sound[7].play(3.5, undefined, undefined, undefined,1.7);
@@ -113,13 +126,9 @@ class Level {
     // returns amountoflivesleft
     // CHECK IF WORKS WHEN GAME WORKS!!!!
     public calculateAmountOfLivesLeft() {
-        if (this.amountOfLivesLeft < 3) {
-            this.amountOfLivesLeft = this.amountOfLivesLeft * Math.floor(1 + (this.levelValue * 0.2));
-            if(this.amountOfLivesLeft > 3) {
-                this.amountOfLivesLeft = 3;
-            }
-            return this.amountOfLivesLeft.toFixed(0);
-            
+        const isDividableBy5 = !(this.levelValue % 5)
+        if (isDividableBy5 && this.amountOfLivesLeft < 3) {
+            this.amountOfLivesLeft++;
         }
     }
 
@@ -225,6 +234,8 @@ class Level {
     }
 
     public update() {
+        if (this.prepareForNextLevel) return;
+
         for (let object of this.spaceObjects) {
             object.update();
         }
@@ -235,4 +246,11 @@ class Level {
             object.draw();
         }
     }
+}
+
+class LevelMenu {
+    constructor(level: ILevel) {
+
+    } 
+    public open() {}
 }
