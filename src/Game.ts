@@ -5,6 +5,8 @@ class Game implements IGame {
     //private startMenu: StartMenu;
     private gameEngine: GameEngine;
     public gameState: GameState;
+    public score: Number;
+    public gameOver: Boolean;
 
     constructor() {
         this.gameState = "start";
@@ -24,7 +26,7 @@ class Game implements IGame {
 
      public playSound() {
          
-             sound[0].setVolume(.05);
+             sound[0].setVolume(.003);
              sound[0].loop(); 
          
      }

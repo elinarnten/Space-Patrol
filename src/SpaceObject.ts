@@ -31,8 +31,10 @@ abstract class SpaceObject {
         if(this.size <= 70){
 
             sound[3].play();
+            sound[3].setVolume(.01);
         } else {
             sound[4].play();
+            sound[4].setVolume(.01);
         }
     }
 
