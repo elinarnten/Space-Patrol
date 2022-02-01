@@ -1,16 +1,13 @@
 class LevelMenu {
-    
+
     private levelMenuContainer!: HTMLDivElement;
-    private level: Level; 
+    private level: ILevel; 
 
-    constructor(level: Level) {
+    constructor(level: ILevel) {
         this.level = level;
-    } 
+    }
 
-
-
-
-    public openLevelMenu() {
+    public openLevelMenu(score: number, goal: number, livesLeft: number) {
         //this.level.prepareForNextLevel = true;
         this.levelMenuContainer = document.createElement('div') as HTMLDivElement;
         this.levelMenuContainer.id = 'levelMenuContainer';
@@ -27,17 +24,27 @@ class LevelMenu {
 
         const levelInfoDiv = document.createElement('div') as HTMLDivElement;    
         levelInfoDiv.id = 'levelInfoDiv';
-        levelInfoDiv.innerHTML = `SCORE: ${this.level.score}/${this.level.getLevelGoal()} <br><br> LIVES LEFT: ${this.level.getAmountOfLivesLeft()} / 3`;;
+        levelInfoDiv.innerHTML = `SCORE: ${score}/${goal} <br><br> LIVES LEFT: ${livesLeft} / 3`;;
         levelContentContainer.appendChild(levelInfoDiv);
 
         const nextButton = document.createElement('button') as HTMLButtonElement;
         nextButton.id = 'nextButton';
         nextButton.innerHTML = 'NEXT';
-        nextButton.addEventListener('click', () => this.level.generateNextLevel());
+        nextButton.addEventListener('click', () => this.goToNextLevel());
         levelContentContainer.appendChild(nextButton);
+    }
 
-       
+    private goToNextLevel() {
+        this.levelMenuContainer.remove();
+        this.level.generateNextLevel();
+    }
 
+    public timeIsOutMenu() {
+
+    }
+
+    public livesIsOutMenu() {
+        
     }
 
 
