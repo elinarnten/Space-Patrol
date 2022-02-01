@@ -21,13 +21,10 @@ class Level implements ILevel {
         this.levelGoal = 0;
         this.amountOfLivesLeft = 3;
         this.score = 0;
-        this.generateSpaceObjects();
-        this.calculateCountdownTimer();
-        this.calculateAmountOfLivesLeft()
-        this.setNewGoal();
+        this.amountOfBombs = 1;
+        this.generateNextLevel();
         this.levelMenu = new LevelMenu(this);
         this.prepareForNextLevel = false;
-        this.amountOfBombs = 1;
 
 
     }
@@ -230,7 +227,7 @@ class Level implements ILevel {
         this.timeBaseValue = 50;
         this.levelValue = this.levelValue + 1;
         this.score = 0;
-        this.levelGoal = this.setNewGoal();
+        this.setNewGoal(this.generateSpaceObjects());
         
         this.generateSpaceObjects();
         this.calculateCountdownTimer();
@@ -238,7 +235,7 @@ class Level implements ILevel {
     }
 
     public update() {
-        // if (this.prepareForNextLevel) return;
+        if (this.prepareForNextLevel) return;
 
         for (let object of this.spaceObjects) {
             object.update();

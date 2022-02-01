@@ -6,15 +6,13 @@ class PauseMenu {
     private startMenu: StartMenu;
     public topMenuContainer!: HTMLDivElement;
 
-    private topMenu: TopMenu;
-    private level: Level;
+    // private topMenu: TopMenu;
+    // private level: Level;
 
     
-    constructor(game: IGame, level: Level){
+    constructor(game: IGame){
         this.game = game;
-        this.level = level;
-        this.startMenu = new StartMenu(game, level); 
-        this.topMenu = new TopMenu(level) 
+        this.startMenu = new StartMenu(game); 
     }
 
     public open() {
@@ -56,14 +54,13 @@ class PauseMenu {
     private resumeGame() {
         this.game.gameState = "running";
         this.pauseContainer.remove();
-        this.topMenu.addTopMenuContainer();
+        // this.topMenu.addTopMenuContainer();
     }
     
     private restartGame() {
         this.game.gameState = "running";
         this.pauseContainer.remove();
         this.startMenu.startGame();
-        this.topMenu.addTopMenuContainer();
     }
     public quitGame() {
         this.game.gameState = "start";
