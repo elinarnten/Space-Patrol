@@ -42,7 +42,9 @@
     color: orange;
 }
 
-
+#timeLevelDiv, #livesLevelDiv {
+    text-align: center;
+}
 
  
 
