@@ -62,7 +62,8 @@ class StartMenu {
     public startGame() {
         this.game.gameState = "running";
         this.startMenuContainer.remove();
-        this.topMenuContainer.classList.remove('displayNone');
+        this.topMenuContainer.remove()
+
         game.restartGame();
         
         //this.pauseContainer.remove();
