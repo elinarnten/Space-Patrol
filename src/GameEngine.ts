@@ -79,7 +79,6 @@ class GameEngine {
     public update() {
         this.level.update();
         this.cockpit.update();
-        this.level.levelCountDownTimer();
         this.topMenu.update();
         this.checkCollision();
         for (const spaceObject of this.level.spaceObjects) {

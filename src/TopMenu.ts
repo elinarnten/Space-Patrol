@@ -3,7 +3,7 @@ class TopMenu {
 
     constructor(level: Level) {
         this.level = level;
-        this.addTopMenuContainer();
+        //this.addTopMenuContainer();
     }
 
     // creating a top menu with HTML elements

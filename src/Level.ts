@@ -1,5 +1,5 @@
 interface ILevel {
-    startNextRound(): void;
+    generateNextLevel(): void;
 }
 
 class Level implements ILevel {
@@ -7,11 +7,12 @@ class Level implements ILevel {
     public timeBaseValue: number;
     public levelValue: number;
     public score: number;
-    public levelGoal: number;
+    private levelGoal: number;
     public amountOfLivesLeft: number;
-    //private prepareForNextLevel: boolean;
-    //private levelMenu: LevelMenu;
-    private amountOfBombs: number;
+    private prepareForNextLevel: boolean;
+    private levelMenu: LevelMenu;
+    public levelMenuContainer!: HTMLDivElement;
+
 
     constructor() {
         this.timeBaseValue = 50;
@@ -19,10 +20,13 @@ class Level implements ILevel {
         this.levelGoal = 0;
         this.amountOfLivesLeft = 3;
         this.score = 0;
-        this.amountOfBombs = 1;
-       // this.prepareForNextLevel = false;
-        //this.levelMenu = new LevelMenu(this);
-        this.generateNextLevel()
+        this.generateSpaceObjects();
+        this.calculateCountdownTimer();
+        this.calculateAmountOfLivesLeft()
+        this.setNewGoal();
+        this.levelMenu = new LevelMenu(this);
+        this.prepareForNextLevel = false;
+
     }
 
 
@@ -43,15 +47,10 @@ class Level implements ILevel {
         return this.timeBaseValue;
     }
 
-    public startNextRound() {
-        //this.prepareForNextLevel = false;
-        this.generateNextLevel();
-    }
-
     // the countdown-timer, use value from timebasevalue, calculateCountdownTimer()
     // both deducts 1 second every 60ms and checks if a player has passed a level.
 
-    public levelCountDownTimer() {
+    private levelCountDownTimer() {
 
         // loops to countdown the timebasevalue
         if (frameCount % 60 === 0 && this.timeBaseValue > 0) {
@@ -62,9 +61,10 @@ class Level implements ILevel {
 
         // Time reach 0, player did not make the score, game over
         if (this.timeBaseValue === 0) {
-            textSize(100);
+            /* textSize(100);
             text('TIME IS OUT YOU DID NOT MAKE IT!', 100, 500);
-            fill(250, 255, 0);
+            fill(250, 255, 0); */
+            this.levelMenu.timeIsOutMenu();
 
         }
 
@@ -77,24 +77,25 @@ class Level implements ILevel {
         
 
          if(this.score >= this.levelGoal){
-             textSize(100);
+             /* textSize(100);
                  text('YOU MADE THE SCORE!', 100, 500);
-                 fill(250, 255, 0);
+                 fill(250, 255, 0); */
              // NEXT LEVEL SHOW
-            //  this.prepareForNextLevel = true;
-            //  this.levelMenu.open();
-            this.generateNextLevel();
-             sound[6].play();
-             sound[6].setVolume(.3);
-             sound[7].play(3.5, undefined, undefined, undefined,1.7);
-             sound[7].setVolume(.5);
+            this.prepareForNextLevel = true;
+            this.levelMenu.openLevelMenu(this.score, this.levelGoal, this.amountOfLivesLeft);
+            // sound[6].play();
+            // sound[6].setVolume(.3);
+            // sound[7].play(3.5, undefined, undefined, undefined,1.7);
+            // sound[7].setVolume(.5);
+
          }
 
         // Player runs out of lives (has hit bombs too many times), did not pass the level, game over
         if (this.amountOfLivesLeft == 0) {
-            textSize(300);
+           /*  textSize(300);
             text('GAME OVER!', 100, 500);
-            fill(250, 255, 0);
+            fill(250, 255, 0); */
+            this.levelMenu.livesIsOutMenu();
              //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
             // sound[8].setVolume(.5);
             // sound[8].play()
@@ -222,12 +223,13 @@ class Level implements ILevel {
 
     // Replaces all values when generating a new level, and calls functions to calculate the new values
     public generateNextLevel() {
+        this.prepareForNextLevel = false;
         this.timeBaseValue = 50;
         this.levelValue = this.levelValue + 1;
         this.score = 0;
+        this.levelGoal = this.setNewGoal();
         
-        const amount = this.generateSpaceObjects();
-        this.setNewGoal(amount);
+        this.generateSpaceObjects();
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
     }
@@ -238,6 +240,8 @@ class Level implements ILevel {
         for (let object of this.spaceObjects) {
             object.update();
         }
+
+        this.levelCountDownTimer();
     }
 
     public draw() {
@@ -247,9 +251,3 @@ class Level implements ILevel {
     }
 }
 
-class LevelMenu {
-    constructor(level: ILevel) {
-        console.log(level)
-    } 
-    public open() {}
-}
