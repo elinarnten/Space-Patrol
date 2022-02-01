@@ -48,6 +48,8 @@ class PauseMenu {
         quitButton.innerHTML = 'QUIT';
         quitButton.addEventListener('click', () => this.quitGame());
         pauseMenuContainer.appendChild(quitButton);   
+
+        this.topMenuContainer = document.getElementById('topMenuContainer') as HTMLDivElement;
     }
     
 
@@ -58,12 +60,14 @@ class PauseMenu {
     }
     
     private restartGame() {
-        this.game.gameState = "running";
+        this.game.gameState = "start";
+        this.topMenuContainer.remove();
         this.pauseContainer.remove();
         this.startMenu.startGame();
     }
     public quitGame() {
         this.game.gameState = "start";
+        this.topMenuContainer.remove();
         this.startMenu.openMenu();
         this.pauseContainer.remove();
     }
