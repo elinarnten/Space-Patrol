@@ -9,8 +9,8 @@ class Level implements ILevel {
     public score: number;
     public levelGoal: number;
     public amountOfLivesLeft: number;
-    private prepareForNextLevel: boolean;
-    private levelMenu: LevelMenu;
+    //private prepareForNextLevel: boolean;
+    //private levelMenu: LevelMenu;
     private amountOfBombs: number;
 
     constructor() {
@@ -20,8 +20,8 @@ class Level implements ILevel {
         this.amountOfLivesLeft = 3;
         this.score = 0;
         this.amountOfBombs = 1;
-        this.prepareForNextLevel = false;
-        this.levelMenu = new LevelMenu(this);
+       // this.prepareForNextLevel = false;
+        //this.levelMenu = new LevelMenu(this);
         this.generateNextLevel()
     }
 
@@ -44,7 +44,7 @@ class Level implements ILevel {
     }
 
     public startNextRound() {
-        this.prepareForNextLevel = false;
+        //this.prepareForNextLevel = false;
         this.generateNextLevel();
     }
 
@@ -249,7 +249,7 @@ class Level implements ILevel {
 
 class LevelMenu {
     constructor(level: ILevel) {
-
+        console.log(level)
     } 
     public open() {}
 }
