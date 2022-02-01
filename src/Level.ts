@@ -53,7 +53,7 @@ class Level implements ILevel {
     private levelCountDownTimer() {
 
         // loops to countdown the timebasevalue
-        if (frameCount % 60 === 0 && this.timeBaseValue > 0) {
+        if (frameCount % 10 === 0 && this.timeBaseValue > 0) {
             this.timeBaseValue--;
         }
 
@@ -61,10 +61,8 @@ class Level implements ILevel {
 
         // Time reach 0, player did not make the score, game over
         if (this.timeBaseValue === 0) {
-            /* textSize(100);
-            text('TIME IS OUT YOU DID NOT MAKE IT!', 100, 500);
-            fill(250, 255, 0); */
-            this.levelMenu.timeIsOutMenu();
+            this.prepareForNextLevel = true;
+            this.levelMenu.timeIsOutMenu(this.score, this.levelGoal, this.amountOfLivesLeft);
 
         }
 
@@ -77,10 +75,6 @@ class Level implements ILevel {
         
 
          if(this.score >= this.levelGoal){
-             /* textSize(100);
-                 text('YOU MADE THE SCORE!', 100, 500);
-                 fill(250, 255, 0); */
-             // NEXT LEVEL SHOW
             this.prepareForNextLevel = true;
             this.levelMenu.openLevelMenu(this.score, this.levelGoal, this.amountOfLivesLeft);
             // sound[6].play();
@@ -92,10 +86,8 @@ class Level implements ILevel {
 
         // Player runs out of lives (has hit bombs too many times), did not pass the level, game over
         if (this.amountOfLivesLeft == 0) {
-           /*  textSize(300);
-            text('GAME OVER!', 100, 500);
-            fill(250, 255, 0); */
-            this.levelMenu.livesIsOutMenu();
+            this.prepareForNextLevel = true;
+            this.levelMenu.livesIsOutMenu(this.score, this.levelGoal, this.amountOfLivesLeft);
              //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
             // sound[8].setVolume(.5);
             // sound[8].play()
