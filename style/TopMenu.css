@@ -18,6 +18,6 @@ li{
     list-style: none;
 }
 
-.displayNone {
+#topMenuContainer.displayNone {
     display: none;
 }
