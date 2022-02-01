@@ -48,7 +48,7 @@ function preload() {
         loadSound('../assets/sound/success.mp3'),
         loadSound('../assets/sound/great-success-borat.mp3'),
         loadSound('../assets/sound/game-over.mp3'),
-        loadSound('../assets/sound/loser.mp3'),
+        loadSound('../assets/sound/loser-wind.mp3'),
         
 
 
