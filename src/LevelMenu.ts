@@ -1,17 +1,17 @@
 class LevelMenu {
     
-    public levelMenuContainer!: HTMLDivElement;
-    private level: ILevel; 
+    private levelMenuContainer!: HTMLDivElement;
+    private level: Level; 
 
-    constructor(level: ILevel) {
+    constructor(level: Level) {
         this.level = level;
     } 
 
 
 
 
-    public open() {
-        this.level.prepareForNextLevel = true;
+    public openLevelMenu() {
+        //this.level.prepareForNextLevel = true;
         this.levelMenuContainer = document.createElement('div') as HTMLDivElement;
         this.levelMenuContainer.id = 'levelMenuContainer';
         document.body.appendChild(this.levelMenuContainer);
@@ -27,14 +27,14 @@ class LevelMenu {
 
         const levelInfoDiv = document.createElement('div') as HTMLDivElement;    
         levelInfoDiv.id = 'levelInfoDiv';
-        levelInfoDiv.innerHTML = 'SCORE:' + 'LIVES:';
+        levelInfoDiv.innerHTML = `SCORE: ${this.level.score}/${this.level.getLevelGoal()} <br><br> LIVES LEFT: ${this.level.getAmountOfLivesLeft()} / 3`;;
         levelContentContainer.appendChild(levelInfoDiv);
 
-        const nextButton = document.createElement('button')
-        nextButton.id = 'aboutButton';
-        nextButton.innerHTML = 'ABOUT';
-        //nextButton.addEventListener('click', () => this.level.generateNextLevel());
-        this.levelMenuContainer.appendChild(nextButton);
+        const nextButton = document.createElement('button') as HTMLButtonElement;
+        nextButton.id = 'nextButton';
+        nextButton.innerHTML = 'NEXT';
+        nextButton.addEventListener('click', () => this.level.generateNextLevel());
+        levelContentContainer.appendChild(nextButton);
 
        
 

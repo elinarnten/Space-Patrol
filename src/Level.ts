@@ -11,6 +11,8 @@ class Level implements ILevel {
     public amountOfLivesLeft: number;
     private prepareForNextLevel: boolean;
     private levelMenu: LevelMenu;
+    public levelMenuContainer!: HTMLDivElement;
+    
 
     constructor(
         levelValue: number,
@@ -25,8 +27,8 @@ class Level implements ILevel {
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
         this.setNewGoal();
+        this.levelMenu = new LevelMenu(this); // (this) gör att den skrivs ut flera ggr.
         this.prepareForNextLevel = false;
-        this.levelMenu = new LevelMenu(this);
     }
 
 
@@ -86,7 +88,7 @@ class Level implements ILevel {
                  fill(250, 255, 0); */
              // NEXT LEVEL SHOW
              this.prepareForNextLevel = true;
-             this.levelMenu.open();
+             this.levelMenu.openLevelMenu();
             // sound[6].play();
             // sound[6].setVolume(.3);
             // sound[7].play(3.5, undefined, undefined, undefined,1.7);
@@ -223,11 +225,12 @@ class Level implements ILevel {
 
     // Replaces all values when generating a new level, and calls functions to calculate the new values
     public generateNextLevel() {
+        this.levelMenuContainer.remove(); // förmodar att denna ska stå här - funkar dock ej nu.
         this.timeBaseValue = 50;
         this.levelValue = this.levelValue + 1;
         this.score = 0;
         this.levelGoal = this.setNewGoal();
-
+        
         this.generateSpaceObjects();
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()

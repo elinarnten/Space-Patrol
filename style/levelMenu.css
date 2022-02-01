@@ -20,12 +20,23 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #FAFF00;
-    height: 19rem;
-    width: 26rem;
+    height: 13rem;
+    width: 23rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
+}
+
+#nextButton {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #FAFF00;
+    font-family: 'Russo One', sans-serif;
+}
+#nextButton:hover {
+    color: orange;
 }
