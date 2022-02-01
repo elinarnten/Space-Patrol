@@ -10,10 +10,10 @@ class Game implements IGame {
 
     constructor() {
         this.gameState = "start";
-        this.pauseMenu = new PauseMenu(this);
         //this.startMenu = new StartMenu(this);
         //this.startMenu = new StartMenu(this);
         this.gameEngine = new GameEngine();
+        this.pauseMenu = new PauseMenu(this);
         this.score = 0;
         this.gameOver = false;
         this.playSound();

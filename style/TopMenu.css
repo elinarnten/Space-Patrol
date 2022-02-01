@@ -17,3 +17,7 @@ color: red;
 li{
     list-style: none;
 }
+
+#topMenuContainer.displayNone {
+    display: none;
+}
