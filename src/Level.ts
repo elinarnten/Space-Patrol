@@ -53,7 +53,7 @@ class Level implements ILevel {
     private levelCountDownTimer() {
 
         // loops to countdown the timebasevalue
-        if (frameCount % 10 === 0 && this.timeBaseValue > 0) {
+        if (frameCount % 60 === 0 && this.timeBaseValue > 0) {
             this.timeBaseValue--;
         }
 

@@ -66,7 +66,7 @@ class LevelMenu {
         const tryAgainButton = document.createElement('button') as HTMLButtonElement;
         tryAgainButton.id = 'nextButton';
         tryAgainButton.innerHTML = 'PLAY AGAIN';
-        tryAgainButton.addEventListener('click', () => this.startOver());
+        tryAgainButton.addEventListener('click', () => location.reload());
         timeContentContainer.appendChild(tryAgainButton);
     }
 
@@ -92,16 +92,11 @@ class LevelMenu {
         const tryAgainButton = document.createElement('button') as HTMLButtonElement;
         tryAgainButton.id = 'tryAgainButton';
         tryAgainButton.innerHTML = 'PLAY AGAIN';
-        tryAgainButton.addEventListener('click', () => this.startOver());
+        tryAgainButton.addEventListener('click', () => location.reload());
         livesContentContainer.appendChild(tryAgainButton);
     }
 
-    private startOver() {
-        // this.livesMenuContainer.remove();
-        // this.timeIsOutContainer.remove();
-        this.game.restartGame();
-        
-    }
+    
 
 
 }
