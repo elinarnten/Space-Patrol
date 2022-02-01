@@ -1,4 +1,4 @@
-#levelMenuContainer {
+#levelMenuContainer, #timeIsOutContainer, #livesMenuContainer {
     position: absolute;
     top: 0;
     left: 0;
@@ -11,7 +11,7 @@
     backdrop-filter: blur(4px);
 }
 
-#levelContentContainer {
+#levelContentContainer, #timeContentContainer, #livesContentContainer {
     background-color: #414141;
     border: solid 3px #FAFF00;
     border-radius: 20px;
@@ -20,7 +20,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #FAFF00;
-    height: 13rem;
+    height: 15rem;
     width: 23rem;
     display: flex;
     flex-direction: column;
@@ -30,13 +30,22 @@
     padding: 0.5rem;
 }
 
-#nextButton {
+#nextButton, #tryAgainButton {
+    margin-top: 3px;
     background: none;
     border: none;
     font-size: 1rem;
     color: #FAFF00;
     font-family: 'Russo One', sans-serif;
 }
-#nextButton:hover {
+#nextButton:hover, #tryAgainButton:hover {
     color: orange;
 }
+
+
+
+ 
+
+
+
+
