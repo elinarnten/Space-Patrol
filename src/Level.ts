@@ -12,16 +12,13 @@ class Level implements ILevel {
     private prepareForNextLevel: boolean;
     private levelMenu: LevelMenu;
     public levelMenuContainer!: HTMLDivElement;
-    
 
-    constructor(
-        levelValue: number,
-        amountOfLivesLeft: number,
-    ) {
+
+    constructor() {
         this.timeBaseValue = 50;
-        this.levelValue = levelValue;
+        this.levelValue = 0;
         this.levelGoal = 0;
-        this.amountOfLivesLeft = amountOfLivesLeft;
+        this.amountOfLivesLeft = 3;
         this.score = 0;
         this.generateSpaceObjects();
         this.calculateCountdownTimer();
@@ -29,6 +26,7 @@ class Level implements ILevel {
         this.setNewGoal();
         this.levelMenu = new LevelMenu(this);
         this.prepareForNextLevel = false;
+
     }
 
 
@@ -48,6 +46,7 @@ class Level implements ILevel {
         this.timeBaseValue = this.timeBaseValue * (1 + (this.levelValue * 0.2));
         return this.timeBaseValue;
     }
+
     // the countdown-timer, use value from timebasevalue, calculateCountdownTimer()
     // both deducts 1 second every 60ms and checks if a player has passed a level.
 
@@ -88,6 +87,7 @@ class Level implements ILevel {
             // sound[6].setVolume(.3);
             // sound[7].play(3.5, undefined, undefined, undefined,1.7);
             // sound[7].setVolume(.5);
+
          }
 
         // Player runs out of lives (has hit bombs too many times), did not pass the level, game over
@@ -133,22 +133,24 @@ class Level implements ILevel {
     // Sets the goal a player needs to reach.  
     // the calc = the current amount of spaceobjects times 5 (to be sure a player can possibly win the level every time)
     // returns levelgoal
-    public setNewGoal() {
-        this.levelGoal = (this.generateSpaceObjects() * 5);
-        return this.levelGoal;
+    public setNewGoal(nrOfAsteroids: number) {
+        this.levelGoal = nrOfAsteroids * 5;
     }
 
     // generates all space objects  (Bombs and asteroids)
     private generateSpaceObjects() {
-
         // start value of asteroids is 5, adds the value of level (example: level 6 would be 5+6).
         let amountOfAsteroids = 5 + this.levelValue;
 
         // start value of bombs is 1, and will add more depending on which level
-        let amountOfBombs = 1 + Math.ceil((this.levelValue - 1) * 0.2);
+
+        const isDividableBy3 = !(this.levelValue % 3)
+        if (isDividableBy3) {
+            this.amountOfBombs = this.amountOfBombs + 1;
+        }
 
         // defining the total amout of objects (asteroids + bombs)
-        let amountOfObjects = amountOfAsteroids + amountOfBombs;
+        let amountOfObjects = amountOfAsteroids + this.amountOfBombs;
 
         // clear the array before adding new objects
         this.spaceObjects.splice(0, amountOfObjects);
@@ -233,7 +235,7 @@ class Level implements ILevel {
     }
 
     public update() {
-        if (this.prepareForNextLevel) return;
+        // if (this.prepareForNextLevel) return;
 
         for (let object of this.spaceObjects) {
             object.update();

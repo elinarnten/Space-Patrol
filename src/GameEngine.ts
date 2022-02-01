@@ -5,7 +5,7 @@ class GameEngine {
     public deltaTime: number;
 
     constructor() {
-        this.level = new Level(1, 3);
+        this.level = new Level();
         this.cockpit = new Cockpit(this);
         this.topMenu = new TopMenu(this.level);
         this.deltaTime = 5000;

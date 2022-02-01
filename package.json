@@ -3,9 +3,10 @@
   "version": "2.0.1",
   "description": "Project to quickly get something working in p5.js and typescript",
   "scripts": {
-    "start": "run-p compile serve",
-    "compile": "tsc --watch",
-    "serve": "live-server --watch=index.html,build --port=5500 --wait=100"
+    "start": "run-p compile-w serve",
+    "compile-w": "tsc --watch",
+    "serve": "live-server --watch=index.html,build --port=5500 --wait=100",
+    "compile": "tsc"
   },
   "devDependencies": {
     "@types/p5": "^0.9.1",
