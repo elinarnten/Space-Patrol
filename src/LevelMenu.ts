@@ -4,12 +4,9 @@ class LevelMenu {
     private timeIsOutContainer!: HTMLDivElement;
     private livesMenuContainer!: HTMLDivElement;
     private level: ILevel; 
-    private game: Game;
 
     constructor(level: ILevel) {
         this.level = level;
-        this.game = game;
-        
     }
 
     public openLevelMenu(score: number, goal: number, livesLeft: number) {
