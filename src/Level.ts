@@ -13,22 +13,16 @@ class Level implements ILevel {
     private levelMenu: LevelMenu;
     private amountOfBombs: number;
 
-    constructor(
-        levelValue: number,
-        amountOfLivesLeft: number,
-    ) {
+    constructor() {
         this.timeBaseValue = 50;
-        this.levelValue = levelValue;
+        this.levelValue = 0;
         this.levelGoal = 0;
-        this.amountOfLivesLeft = amountOfLivesLeft;
+        this.amountOfLivesLeft = 3;
         this.score = 0;
         this.amountOfBombs = 1;
-        this.generateSpaceObjects();
-        this.calculateCountdownTimer();
-        this.calculateAmountOfLivesLeft()
-        this.setNewGoal();
         this.prepareForNextLevel = false;
         this.levelMenu = new LevelMenu(this);
+        this.generateNextLevel()
     }
 
 
@@ -138,21 +132,19 @@ class Level implements ILevel {
     // Sets the goal a player needs to reach.  
     // the calc = the current amount of spaceobjects times 5 (to be sure a player can possibly win the level every time)
     // returns levelgoal
-    public setNewGoal() {
-        this.levelGoal = (this.generateSpaceObjects() * 5);
-        return this.levelGoal;
+    public setNewGoal(nrOfAsteroids: number) {
+        this.levelGoal = nrOfAsteroids * 5;
     }
 
     // generates all space objects  (Bombs and asteroids)
     private generateSpaceObjects() {
-
         // start value of asteroids is 5, adds the value of level (example: level 6 would be 5+6).
         let amountOfAsteroids = 5 + this.levelValue;
 
         // start value of bombs is 1, and will add more depending on which level
 
-        const isDividableBy5 = !(this.levelValue % 5)
-        if (isDividableBy5) {
+        const isDividableBy3 = !(this.levelValue % 3)
+        if (isDividableBy3) {
             this.amountOfBombs = this.amountOfBombs + 1;
         }
 
@@ -233,9 +225,9 @@ class Level implements ILevel {
         this.timeBaseValue = 50;
         this.levelValue = this.levelValue + 1;
         this.score = 0;
-        this.levelGoal = this.setNewGoal();
-
-        this.generateSpaceObjects();
+        
+        const amount = this.generateSpaceObjects();
+        this.setNewGoal(amount);
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
     }
