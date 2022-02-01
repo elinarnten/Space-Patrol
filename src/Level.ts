@@ -64,13 +64,13 @@ class Level implements ILevel {
             this.prepareForNextLevel = true;
             this.levelMenu.timeIsOutMenu(this.score, this.levelGoal, this.amountOfLivesLeft);
 
+            sound[8].setVolume(.1);
+            sound[8].play()
+            sound[9].play(4, undefined, .2);
         }
 
         // Player has reached the goal, pass level and generate next level
          //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
-            // sound[8].setVolume(.5);
-            // sound[8].play()
-            // sound[9].play(2, undefined, .5, 1);
             //you didn't pass score in time, earth is no more.
         
 
@@ -91,9 +91,9 @@ class Level implements ILevel {
             this.prepareForNextLevel = true;
             this.levelMenu.livesIsOutMenu(this.score, this.levelGoal, this.amountOfLivesLeft);
              //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
-            // sound[8].setVolume(.5);
-            // sound[8].play()
-            // sound[9].play(2, undefined, .5, 1);
+             sound[8].setVolume(.1);
+             sound[8].play()
+             sound[9].play(4, undefined, .2);
             // run "next level menu thing"
             // Score:  xxx/xxx
             // Lives left: xx/xx
