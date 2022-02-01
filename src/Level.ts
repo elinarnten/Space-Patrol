@@ -12,6 +12,7 @@ class Level implements ILevel {
     private prepareForNextLevel: boolean;
     private levelMenu: LevelMenu;
     public levelMenuContainer!: HTMLDivElement;
+    private amountOfBombs: number;
 
 
     constructor() {
@@ -26,6 +27,8 @@ class Level implements ILevel {
         this.setNewGoal();
         this.levelMenu = new LevelMenu(this);
         this.prepareForNextLevel = false;
+        this.amountOfBombs = 1;
+
 
     }
 
