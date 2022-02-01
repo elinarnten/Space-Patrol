@@ -77,16 +77,13 @@ class Level implements ILevel {
         
 
          if(this.score >= this.levelGoal){
-             /* textSize(100);
-                 text('YOU MADE THE SCORE!', 100, 500);
-                 fill(250, 255, 0); */
              // NEXT LEVEL SHOW
             this.prepareForNextLevel = true;
             this.levelMenu.openLevelMenu(this.score, this.levelGoal, this.amountOfLivesLeft);
-            // sound[6].play();
-            // sound[6].setVolume(.3);
-            // sound[7].play(3.5, undefined, undefined, undefined,1.7);
-            // sound[7].setVolume(.5);
+            sound[6].play();
+            sound[6].setVolume(.3);
+            sound[7].play(3.5, undefined, undefined, undefined,1.7);
+            sound[7].setVolume(.5);
 
          }
 
@@ -122,7 +119,6 @@ class Level implements ILevel {
 
     // Add more lives after xxxxxx amount of levels.
     // returns amountoflivesleft
-    // CHECK IF WORKS WHEN GAME WORKS!!!!
     public calculateAmountOfLivesLeft() {
         const isDividableBy5 = !(this.levelValue % 5)
         if (isDividableBy5 && this.amountOfLivesLeft < 3) {
@@ -227,9 +223,8 @@ class Level implements ILevel {
         this.timeBaseValue = 50;
         this.levelValue = this.levelValue + 1;
         this.score = 0;
-        this.setNewGoal(this.generateSpaceObjects());
-        
-        this.generateSpaceObjects();
+        let nrOfAsteroids = this.generateSpaceObjects();
+        this.setNewGoal(nrOfAsteroids);
         this.calculateCountdownTimer();
         this.calculateAmountOfLivesLeft()
     }
