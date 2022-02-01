@@ -3,7 +3,7 @@ class StartMenu {
     private startMenuContainer!: HTMLDivElement;
     private aboutGameContainer!: HTMLDivElement;
     public pauseContainer!: HTMLDivElement;
-    public addTopMenuContainer!: HTMLDivElement; //ej HTML.
+    
     // private topMenu: TopMenu;
     // private level: Level;
     public topMenuContainer!: HTMLDivElement;
@@ -11,6 +11,7 @@ class StartMenu {
 
     constructor(game: IGame) {
         this.game = game; 
+        
 
         //this.topMenu = new TopMenu()
         // eventually this might not be needed
@@ -20,8 +21,10 @@ class StartMenu {
     }
     
     public openMenu() {
+        this.topMenuContainer = document.getElementById('topMenuContainer') as HTMLDivElement;
         //  textFont(spaceFont, [2]) 
         //this.topMenuContainer.style.display = 'none';
+
         this.startMenuContainer = document.createElement ('div') as HTMLDivElement;
         this.startMenuContainer.classList.add('startMenuContainer');
         document.body.appendChild(this.startMenuContainer);
@@ -52,11 +55,14 @@ class StartMenu {
         this.startMenuContainer.appendChild(aboutButton); 
         //this.pauseContainer.remove() 
         //this.pauseContainer.remove();
+        // this.topMenuContainer.classList.toggle('displayNone');
+
     }
     
     public startGame() {
         this.game.gameState = "running";
         this.startMenuContainer.remove();
+        this.topMenuContainer.classList.toggle('displayNone');
         // this.topMenu.addTopMenuContainer();
         //this.pauseContainer.remove();
         //this.pauseMenu.remove();
