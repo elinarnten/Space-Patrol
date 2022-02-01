@@ -58,7 +58,7 @@ class PauseMenu {
     }
     
     private restartGame() {
-        this.game.gameState = "running";
+        this.game.gameState = "start";
         this.pauseContainer.remove();
         this.startMenu.startGame();
     }

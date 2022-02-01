@@ -20,9 +20,9 @@ class Game implements IGame {
 
     }
 
-    // private restartGame() {
-    //    this.gameEngine = new GameEngine();
-    // }
+    public restartGame() {
+       this.gameEngine = new GameEngine();
+    }
 
      public playSound() {
          
