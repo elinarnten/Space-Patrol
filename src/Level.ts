@@ -164,7 +164,8 @@ class Level implements ILevel {
 
             for (let j = 0; j < this.spaceObjects.length; j++) {
                 let other = this.spaceObjects[j];
-                let d = dist(asteroid.position.x, asteroid.position.y, other.position.x, other.position.y);
+                let d = dist(asteroid.position.x, asteroid.position.y,
+                     other.position.x, other.position.y);
 
                 if (d < asteroid.size + other.size) {
                     //then they are overlapping
