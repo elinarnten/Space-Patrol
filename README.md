@@ -8,9 +8,9 @@ Coders in this prorect;
 - Sara Lindqvist
 - Elin Arntén
 
-Date started: 2021-01-14
+Date started: 2022-01-14
 
-Date for completion: 2021-02-02
+Date for completion: 2022-02-02
 
 
 # About Game
