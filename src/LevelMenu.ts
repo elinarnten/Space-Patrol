@@ -52,7 +52,7 @@ class LevelMenu {
 
         const timeLevelDiv = document.createElement('div') as HTMLDivElement;    
         timeLevelDiv.id = 'timeLevelDiv';
-        timeLevelDiv.innerHTML = 'GAME OVER <br> <br> TIME IS OUT' ;
+        timeLevelDiv.innerHTML = 'GAME OVER <br> <br> TIME IS OUT';
         timeContentContainer.appendChild(timeLevelDiv);
 
         const timeInfoDiv = document.createElement('div') as HTMLDivElement;    
