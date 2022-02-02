@@ -2,21 +2,16 @@
 
 class PauseMenu {
     public pauseContainer!: HTMLDivElement;
-    private game: IGame; 
+    private game: IGame;
     private startMenu: StartMenu;
     public topMenuContainer!: HTMLDivElement;
 
-    // private topMenu: TopMenu;
-    // private level: Level;
-
-    
-    constructor(game: IGame){
+    constructor(game: IGame) {
         this.game = game;
-        this.startMenu = new StartMenu(game); 
+        this.startMenu = new StartMenu(game);
     }
 
     public open() {
-
         this.pauseContainer = document.createElement('div') as HTMLDivElement;
         this.pauseContainer.id = 'pauseContainer';
         document.body.appendChild(this.pauseContainer);
@@ -24,7 +19,7 @@ class PauseMenu {
         const pauseMenuContainer = document.createElement('DIV') as HTMLDivElement;
         pauseMenuContainer.id = 'pauseMenuContainer';
         this.pauseContainer.appendChild(pauseMenuContainer);
-        
+
         const resumeButton = document.createElement('button')
         resumeButton.id = 'resumeButton';
         resumeButton.innerHTML = 'RESUME';
@@ -47,17 +42,15 @@ class PauseMenu {
         quitButton.id = 'quitButton';
         quitButton.innerHTML = 'QUIT';
         quitButton.addEventListener('click', () => this.quitGame());
-        pauseMenuContainer.appendChild(quitButton);   
+        pauseMenuContainer.appendChild(quitButton);
 
         this.topMenuContainer = document.getElementById('topMenuContainer') as HTMLDivElement;
     }
-    
 
     private resumeGame() {
         this.game.gameState = "running";
         this.pauseContainer.remove();
     }
-    
 
     private restartGame() {
         this.game.gameState = "start";

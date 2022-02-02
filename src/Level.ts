@@ -25,10 +25,7 @@ class Level implements ILevel {
         this.generateNextLevel();
         this.levelMenu = new LevelMenu(this);
         this.prepareForNextLevel = false;
-
-
     }
-
 
     // gets the current level value (number) 
     public getCurrentLevel() {
@@ -70,10 +67,9 @@ class Level implements ILevel {
         }
 
         // Player has reached the goal, pass level and generate next level
-         //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
-            //you didn't pass score in time, earth is no more.
+        //we need to set state to game over before playing game over sound, otherwise it will play it 60/ a second forever
+        //you didn't pass score in time, earth is no more.
         
-
          if(this.score >= this.levelGoal){
 
              // NEXT LEVEL SHOW
@@ -83,7 +79,6 @@ class Level implements ILevel {
             sound[6].setVolume(.3);
             sound[7].play(3.5, undefined, undefined, undefined,1.7);
             sound[7].setVolume(.5);
-
          }
 
         // Player runs out of lives (has hit bombs too many times), did not pass the level, game over
@@ -94,11 +89,6 @@ class Level implements ILevel {
              sound[8].setVolume(.1);
              sound[8].play()
              sound[9].play(4, undefined, .2);
-            // run "next level menu thing"
-            // Score:  xxx/xxx
-            // Lives left: xx/xx
-            // If score met, generate new level
-            // if score not met, add GAME OVER state
         }
     }
     
@@ -231,7 +221,7 @@ class Level implements ILevel {
 
         for (let object of this.spaceObjects) {
             object.update();
-        }
+         }
 
         this.levelCountDownTimer();
     }

@@ -1,16 +1,14 @@
 class LevelMenu {
-
     private levelMenuContainer!: HTMLDivElement;
     private timeIsOutContainer!: HTMLDivElement;
     private livesMenuContainer!: HTMLDivElement;
-    private level: ILevel; 
+    private level: ILevel;
 
     constructor(level: ILevel) {
         this.level = level;
     }
 
     public openLevelMenu(score: number, goal: number, livesLeft: number) {
-        //this.level.prepareForNextLevel = true;
         this.levelMenuContainer = document.createElement('div') as HTMLDivElement;
         this.levelMenuContainer.id = 'levelMenuContainer';
         document.body.appendChild(this.levelMenuContainer);
@@ -19,12 +17,12 @@ class LevelMenu {
         levelContentContainer.id = 'levelContentContainer';
         this.levelMenuContainer.appendChild(levelContentContainer);
 
-        const headingLevelDiv = document.createElement('div') as HTMLDivElement;    
+        const headingLevelDiv = document.createElement('div') as HTMLDivElement;
         headingLevelDiv.id = 'aboutLevelDiv';
-        headingLevelDiv.innerHTML = 'LEVEL IS COMPLETED' ;
+        headingLevelDiv.innerHTML = 'LEVEL IS COMPLETED';
         levelContentContainer.appendChild(headingLevelDiv);
 
-        const levelInfoDiv = document.createElement('div') as HTMLDivElement;    
+        const levelInfoDiv = document.createElement('div') as HTMLDivElement;
         levelInfoDiv.id = 'levelInfoDiv';
         levelInfoDiv.innerHTML = `SCORE: ${score} / ${goal} <br><br> LIVES LEFT: ${livesLeft} / 3`;;
         levelContentContainer.appendChild(levelInfoDiv);
@@ -50,12 +48,12 @@ class LevelMenu {
         timeContentContainer.id = 'timeContentContainer';
         this.timeIsOutContainer.appendChild(timeContentContainer);
 
-        const timeLevelDiv = document.createElement('div') as HTMLDivElement;    
+        const timeLevelDiv = document.createElement('div') as HTMLDivElement;
         timeLevelDiv.id = 'timeLevelDiv';
         timeLevelDiv.innerHTML = 'GAME OVER <br> <br> TIME IS OUT';
         timeContentContainer.appendChild(timeLevelDiv);
 
-        const timeInfoDiv = document.createElement('div') as HTMLDivElement;    
+        const timeInfoDiv = document.createElement('div') as HTMLDivElement;
         timeInfoDiv.id = 'timeInfoDiv';
         timeInfoDiv.innerHTML = `SCORE: ${score} / ${goal} <br><br> LIVES LEFT: ${livesLeft} / 3`;;
         timeContentContainer.appendChild(timeInfoDiv);
@@ -76,12 +74,12 @@ class LevelMenu {
         livesContentContainer.id = 'livesContentContainer';
         this.livesMenuContainer.appendChild(livesContentContainer);
 
-        const livesLevelDiv = document.createElement('div') as HTMLDivElement;    
+        const livesLevelDiv = document.createElement('div') as HTMLDivElement;
         livesLevelDiv.id = 'livesLevelDiv';
-        livesLevelDiv.innerHTML = 'GAME OVER <br><br> YOU GOT NO LIVES LEFT' ;
+        livesLevelDiv.innerHTML = 'GAME OVER <br><br> YOU GOT NO LIVES LEFT';
         livesContentContainer.appendChild(livesLevelDiv);
 
-        const livesInfoDiv = document.createElement('div') as HTMLDivElement;    
+        const livesInfoDiv = document.createElement('div') as HTMLDivElement;
         livesInfoDiv.id = 'livesInfoDiv';
         livesInfoDiv.innerHTML = `SCORE: ${score} / ${goal} <br><br> LIVES LEFT: ${livesLeft} / 3`;;
         livesContentContainer.appendChild(livesInfoDiv);
@@ -92,8 +90,4 @@ class LevelMenu {
         tryAgainButton.addEventListener('click', () => location.reload());
         livesContentContainer.appendChild(tryAgainButton);
     }
-
-    
-
-
 }

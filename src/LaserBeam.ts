@@ -1,5 +1,4 @@
 class LaserBeam {
-
     public hitsAsteroid: boolean;
     private angle: number;
     private startPosition: p5.Vector;

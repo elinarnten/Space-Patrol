@@ -11,8 +11,6 @@ class GameEngine {
         this.deltaTime = 5000;
     }
 
-   
-
     // The function that handles collisions
     public checkCollision() {
         // gets laserbeam

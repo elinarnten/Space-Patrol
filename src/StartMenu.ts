@@ -3,28 +3,15 @@ class StartMenu {
     private startMenuContainer!: HTMLDivElement;
     private aboutGameContainer!: HTMLDivElement;
     public pauseContainer!: HTMLDivElement;
-    
-    // private topMenu: TopMenu;
-    // private level: Level;
     public topMenuContainer!: HTMLDivElement;
-    //public pauseMenu: PauseMenu;
 
     constructor(game: IGame) {
         this.game = game; 
         this.topMenuContainer = document.getElementById('topMenuContainer') as HTMLDivElement;
-
-        //this.topMenu = new TopMenu()
-        // eventually this might not be needed
-        this.openMenu();
-        
-        //this.pauseMenu = new PauseMenu(game); 
+        this.openMenu(); 
     }
     
     public openMenu() {
-        
-        //  textFont(spaceFont, [2]) 
-        //this.topMenuContainer.style.display = 'none';
-
         this.startMenuContainer = document.createElement ('div') as HTMLDivElement;
         this.startMenuContainer.classList.add('startMenuContainer');
         document.body.appendChild(this.startMenuContainer);
@@ -46,15 +33,13 @@ class StartMenu {
         startGameButton.addEventListener('click', () => this.startGame())
         this.startMenuContainer.appendChild(startGameButton);
         
-        
+
         const aboutButton = document.createElement('button')
         aboutButton.classList.add('aboutButton');
         aboutButton.innerHTML = 'ABOUT';
         aboutButton.style.fontFamily = 'russo one';
         aboutButton.addEventListener('click', () => this.aboutGame())
         this.startMenuContainer.appendChild(aboutButton); 
-        //this.pauseContainer.remove() 
-        //this.pauseContainer.remove();
         this.topMenuContainer.classList.toggle('displayNone');
 
     }
@@ -63,14 +48,7 @@ class StartMenu {
         this.game.gameState = "running";
         this.startMenuContainer.remove();
         this.topMenuContainer.remove()
-
         game.restartGame();
-        
-        //this.pauseContainer.remove();
-        //this.pauseMenu.remove();
-    }
-
-    public quitGame() {
     }
 
     public aboutGame() {
@@ -100,15 +78,6 @@ class StartMenu {
         backButton.id = 'backButton';
         backButton.innerHTML = 'BACK';
         backButton.addEventListener('click', () => this.aboutGameContainer.remove());
-        buttonDiv.appendChild(backButton);
-        
-    }
-
-    public update() {
-       
-    }
-
-    public draw() {
-      
+        buttonDiv.appendChild(backButton);  
     }
 }

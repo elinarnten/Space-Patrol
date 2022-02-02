@@ -30,7 +30,7 @@ abstract class SpaceObject {
 
     public setDestroyed() {
         this.isExploding = true;
-        if(this.size <= 70){
+        if (this.size <= 70) {
 
             sound[3].play();
             sound[3].setVolume(.01);
@@ -46,10 +46,10 @@ abstract class SpaceObject {
         textSize(30);
         fill('red');
         translate(this.position.x, this.position.y)
-        if(this.health == 2) {
+        if (this.health == 2) {
             fill('yellow')
             rect(0, this.size, this.size, 15);
-        }else {
+        } else {
             fill('red');
             rect(0, this.size, this.size / 2, 15);
 
@@ -57,16 +57,16 @@ abstract class SpaceObject {
         pop();
     }
 
-    public explosionAnimation(){
+    public explosionAnimation() {
         if (this.isExploding) {
-            this.explodingTimeout -= deltaTime; 
+            this.explodingTimeout -= deltaTime;
             if (this.explodingTimeout < 0) {
                 this.image = images.explosions[this.imageIndex];
                 this.explodingTimeout = 200;
                 this.imageIndex++;
             }
 
-            if (this.imageIndex === 9){
+            if (this.imageIndex === 9) {
                 this.isDestroyed = true;
             }
         }
@@ -74,7 +74,7 @@ abstract class SpaceObject {
 
     public update() {
         this.angle = this.angle + 1;
-        this.explosionAnimation()   
+        this.explosionAnimation()
     }
 
     public draw() {
@@ -85,9 +85,8 @@ abstract class SpaceObject {
         image(this.image, 0, 0, this.size * 2, this.size * 2);
         pop();
 
-        if(this.isHit == true && this.health >= 1) {
+        if (this.isHit == true && this.health >= 1) {
             this.displayAsteroidLife();
         }
-
     }
 }  

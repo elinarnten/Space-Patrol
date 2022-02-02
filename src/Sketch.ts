@@ -3,7 +3,6 @@
 let game: Game;
 let images: Images;
 let startMenu: StartMenu;
-// let spaceObjects: Array<SpaceObject> = [];
 let isActivated: LaserBeam;
 const timeBaseValue = 600;
 let spaceFont;
@@ -32,9 +31,6 @@ function preload() {
             loadImage('./assets/images/explosion/8.png'),
             loadImage('./assets/images/explosion/9.png')
         ],
-
-
-
     }
 
 
@@ -49,19 +45,7 @@ function preload() {
         loadSound('../assets/sound/great-success-borat.mp3'),
         loadSound('../assets/sound/game-over.mp3'),
         loadSound('../assets/sound/loser-wind.mp3'),
-        
-
-
-
-
-
-
-
-
-
     ] 
-
-
 }
 
 /**
@@ -74,15 +58,8 @@ function setup() {
     createCanvas(windowWidth, windowHeight - 80);
     angleMode(DEGREES);
     frameRate(60);
-    // noCursor();
-
-    // level base stats, time, levelvalue, objectsize, amountofobjects, levelgoal, amountoflives
-    // const timeBaseValue = timeBaseValue(200)
-
-    // level, BaseAmountOfLives, Score
     game = new Game();
 }
-
 
 /**
  * Built in draw function in P5
