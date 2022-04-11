@@ -33,7 +33,7 @@ SPACEBAR - Shoot
 # DEMO
 The full game can be found at the netlify page:
 
-https://elastic-meitner-aeae1a.netlify.app/
+https://spacepatrol.netlify.app/
 
 
 # Links
